@@ -1,0 +1,90 @@
+<mat-toolbar>
+  @if (isHandset$ | async) {
+  <button matMiniFab class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  } @else {
+  <mat-slide-toggle (click)="drawer.toggle()" style="margin-left: 20px"></mat-slide-toggle>
+  }
+
+  <div class="toolbar">
+    <span>Material App</span>
+    <button class="avatar-image" (click)="onClick()"></button>
+    <!-- <div mat-card-avatar (click)="onClick()" class="avatar-image"></div> -->
+  </div>
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #drawer fixedInViewport [style.marginTop.px]="isHandset$ ? 64 : 64"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <mat-nav-list>
+      <a mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Material
+        Table</a>
+      <a mat-list-item routerLinkActive="active" routerLink="notfound">Not Found</a>
+      <a mat-list-item routerLinkActive="active" routerLink="matbutons">Buttons</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- ######################################333333 -->
+<!-- <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="isMobile() ? 56 : 0">
+  <mat-sidenav #snav [mode]="isMobile() ? 'over' : 'side'" [fixedInViewport]="isMobile()" fixedTopGap="56">
+    <mat-nav-list>
+      @for (nav of fillerNav; track nav) {
+      <a mat-list-item>{{nav}}</a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    @for (content of fillerContent; track content) {
+    <p>{{content}}</p>
+    }
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+<!-- ############################################# -->
+<!-- ################################################ -->
+<!-- <mat-sidenav-container>
+  <mat-sidenav #drawer fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'push' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Material
+        Table</a>
+      <a mat-list-item routerLinkActive="active" routerLink="notfound">Not Found</a>
+      <a mat-list-item routerLinkActive="active" routerLink="matbutons">Buttons</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+<!-- <mat-toolbar class="example-toolbar">
+      <button matIconButton (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <h1 class="example-app-name">Responsive App</h1>
+    </mat-toolbar> -->
+
+<!-- <mat-sidenav-container class="example-sidenav-container"
+                          [style.marginTop.px]="isMobile() ? 56 : 0">
+      <mat-sidenav #snav [mode]="isMobile() ? 'over' : 'side'"
+                  [fixedInViewport]="isMobile()" fixedTopGap="56">
+        <mat-nav-list>
+          @for (nav of fillerNav; track nav) {
+            <a mat-list-item>{{nav}}</a>
+          }
+        </mat-nav-list>
+      </mat-sidenav>
+
+      <mat-sidenav-content>
+        @for (content of fillerContent; track content) {
+    <p>{{content}}</p>
+  }
+      </mat-sidenav-content>
+    </mat-sidenav-container> -->

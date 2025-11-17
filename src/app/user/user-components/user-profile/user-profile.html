@@ -1,0 +1,32 @@
+<div class="container">
+    <mat-card class="profile-container">
+        <mat-card-header>
+            <!-- <div mat-card-avatar class="example-header-image"></div> -->
+            <mat-card-title>Profile</mat-card-title>
+            <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        </mat-card-header>
+        <div class="spacer"></div>
+        <img mat-card-image class="avatar-image" src="https://material.angular.dev/assets/img/examples/shiba1.jpg"
+            alt="Profile photo">
+        <div class="spacer"></div>
+
+        <mat-card-content>
+            <mat-card-subtitle>Personal Details</mat-card-subtitle>
+            <p>
+                Name : {{this.dataSource.personal_details.user_first_name}}
+                {{this.dataSource.personal_details.user_last_name}}
+            </p>
+            <p>gender : {{this.dataSource.personal_details.user_gender}} </p>
+            <p>
+                Date of Birth : {{this.dataSource.personal_details.user_dob | date}} </p>
+            <mat-card-subtitle>Contact Details</mat-card-subtitle>
+            <p> Email : {{this.dataSource.contact_details.user_email_address}} </p>
+            <p>phone : {{this.dataSource.contact_details.user_phone}} </p>
+            <p>Address : {{this.dataSource.contact_details.user_address}} </p>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+            <button matButton>LIKE</button>
+            <button matButton>SHARE</button>
+        </mat-card-actions> -->
+    </mat-card>
+</div>

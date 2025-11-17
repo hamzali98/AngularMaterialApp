@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+}
+
+.buttondiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.2rem;
+  margin: 0.2rem;
+}

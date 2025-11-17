@@ -1,1 +1,97 @@
+@use '@angular/material' as mat;
+
+:root {
+  @include mat.toolbar-overrides((container-background-color: var(--mat-sys-primary-container),
+      container-text-color: var(--mat-sys-primary),
+    ));
+  @include mat.sidenav-overrides((container-divider-color: white,
+    ));
+  @include mat.table-overrides(( // background-color: #424242,
+      header-headline-color: var(--mat-sys-primary),
+    ));
+  @include mat.paginator-overrides((container-text-color: var(--mat-sys-primary),
+      container-background-color: var(--mat-sys-primary-container),
+    ));
+  @include mat.tabs-overrides(( // active-focus-indicator-color: orange,
+      active-focus-label-text-color: var(--mat-sys-primary),
+      active-label-text-color: var(--mat-sys-primary),
+    ));
+  // buttons override
+  // @include mat.fab-overrides((
+  //   container-color: orange,
+  //   container-elevation-shadow: -4px -4px 5px 0px rgba(0, 0, 0, 0.5),
+  // ));
+}
+
+html {
+  // color-scheme: light dark;
+  @include mat.theme((color: (primary: mat.$cyan-palette,
+        tertiary: mat.$chartreuse-palette,
+        theme-type: dark,
+      ),
+      typography: (plain-family: Roboto,
+        brand-family: Open Sans,
+        bold-weight: 900,
+        medium-weight: 500,
+        regular-weight: 300,
+      ),
+      density: 0,
+    ));
+
+}
+
+
+body {
+  // color-scheme: light dark;
+
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  // font: var(--mat-sys-body-medium);
+
+  margin: 0;
+}
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// mostly for table
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  // background-color: var(--mat-sys-primary-container);
+}
+
+.spacer {
+  margin: 1rem;
+}
+
+.spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 2;
+  backdrop-filter: blur(0.4rem);
+  background-color: rgba(0, 0, 0, 0.233);
+}
+
+// .parentformcard {
+//   display
+// }

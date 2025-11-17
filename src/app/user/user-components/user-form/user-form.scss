@@ -1,0 +1,38 @@
+mat-card {
+    justify-content: start;
+    align-items: center;
+}
+
+.parentcard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+}
+
+.cardcontent {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+mat-form-field {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+mat-card-actions {
+    margin: 0.5rem;
+}
+
+.success {
+    background-color: green;
+}
+
+.error {
+    background-color: red;
+}

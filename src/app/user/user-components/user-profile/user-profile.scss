@@ -1,0 +1,24 @@
+.container {
+  // margin: 5rem;
+  padding: 3rem;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// .spacer{
+//     margin: 1rem;
+// }
+
+.avatar-image {
+  //   background-image: url('https://material.angular.dev/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50rem;
+
+}

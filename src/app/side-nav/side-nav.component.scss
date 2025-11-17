@@ -1,0 +1,25 @@
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-left: 1rem;
+}
+
+.active {
+  background-color: var(--mat-sys-secondary-container);
+  // --mat-sys-primary-container
+  // background-color: var(--mat-sys-primary-container);
+
+}
+
+.avatar-image {
+  background-image: url('https://material.angular.dev/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+  border: none;
+  border-radius: 50px;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}

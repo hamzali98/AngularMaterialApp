@@ -1,0 +1,33 @@
+{
+  "products": [],
+  "usersData": [
+    {
+      "id": "45b9",
+      "personal_details": {
+        "user_first_name": "Hamza",
+        "user_last_name": "Ali",
+        "user_gender": "male",
+        "user_dob": "2025-11-20T19:00:00.000Z"
+      },
+      "contact_details": {
+        "user_email_address": "email@gmil.com",
+        "user_phone": "68716654684",
+        "user_address": "home address"
+      }
+    },
+    {
+      "id": "8e69",
+      "personal_details": {
+        "user_first_name": "user",
+        "user_last_name": "2",
+        "user_gender": "female",
+        "user_dob": "2025-11-20T19:00:00.000Z"
+      },
+      "contact_details": {
+        "user_email_address": "user2@email.com",
+        "user_phone": "0000000002",
+        "user_address": "user 2 home address"
+      }
+    }
+  ]
+}

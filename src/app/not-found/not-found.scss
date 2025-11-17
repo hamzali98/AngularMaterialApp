@@ -1,0 +1,22 @@
+.not-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    font-size: xx-large;
+    color: var(--mat-sys-on-primary-container);
+}
+
+p {
+    font-size: medium;
+    color: var(--mat-sys-on-primary-container);
+}
+
+.not-smily{
+    font-size: 10rem;
+    margin: 1rem;
+    color: var(--mat-sys-on-primary-container);
+}
+
