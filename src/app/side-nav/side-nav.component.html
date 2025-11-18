@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar >
   @if (isHandset$ | async) {
   <button matMiniFab class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
@@ -9,7 +9,17 @@
 
   <div class="toolbar">
     <span>Material App</span>
-    <button class="avatar-image" (click)="onClick()"></button>
+
+    <div style="display: flex;flex-direction: row; justify-content: center; align-items: center;">
+      @if(userName()){
+      <p>Greetings! {{userName()}} </p>
+      } @else {
+      <p>Greetings! User</p>
+      }
+      <button class="avatar-image" (click)="onClick()"></button>
+
+    </div>
+
     <!-- <div mat-card-avatar (click)="onClick()" class="avatar-image"></div> -->
   </div>
 

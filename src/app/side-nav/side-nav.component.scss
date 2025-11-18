@@ -7,11 +7,14 @@
   margin-left: 1rem;
 }
 
+// .toolbar p {
+//   font-size: medium;
+// }
+
 .active {
   background-color: var(--mat-sys-secondary-container);
   // --mat-sys-primary-container
   // background-color: var(--mat-sys-primary-container);
-
 }
 
 .avatar-image {
@@ -21,5 +24,22 @@
   border-radius: 50px;
   width: 3rem;
   height: 3rem;
+  margin-left: 1rem;
   cursor: pointer;
+}
+
+mat-sidenav{
+  width: 200px;
+}
+
+@media (width <= 700px) {
+  .toolbar p {
+    font-size: small;
+  }
+
+  .avatar-image{
+    height: 2rem;
+    width: 2rem;
+  }
+  
 }

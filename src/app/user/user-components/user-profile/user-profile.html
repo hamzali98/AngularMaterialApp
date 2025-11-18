@@ -1,32 +1,80 @@
-<div class="container">
-    <mat-card class="profile-container">
+@if(dataSource){
+<div class="profile-container">
+    <!-- profile side menu card -->
+    <mat-card style="width: 350px;">
         <mat-card-header>
-            <!-- <div mat-card-avatar class="example-header-image"></div> -->
-            <mat-card-title>Profile</mat-card-title>
-            <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+            <mat-card-title>
+                Personal Information
+            </mat-card-title>
         </mat-card-header>
-        <div class="spacer"></div>
-        <img mat-card-image class="avatar-image" src="https://material.angular.dev/assets/img/examples/shiba1.jpg"
-            alt="Profile photo">
-        <div class="spacer"></div>
-
+        <mat-card-header>
+            <div mat-card-avatar class="avatar-image">
+                <button matIconButton class="profileeditbtn" aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon  style="color: cyan; ">camera_alt</mat-icon>
+                </button>
+            </div>
+            <div class="namecontainer">
+                <mat-card-title>{{dataSource.personal_details.user_first_name}}
+                    {{dataSource.personal_details.user_last_name}}</mat-card-title>
+                <mat-card-subtitle>Lorem Ipsem</mat-card-subtitle>
+            </div>
+        </mat-card-header>
         <mat-card-content>
-            <mat-card-subtitle>Personal Details</mat-card-subtitle>
-            <p>
-                Name : {{this.dataSource.personal_details.user_first_name}}
-                {{this.dataSource.personal_details.user_last_name}}
-            </p>
-            <p>gender : {{this.dataSource.personal_details.user_gender}} </p>
-            <p>
-                Date of Birth : {{this.dataSource.personal_details.user_dob | date}} </p>
-            <mat-card-subtitle>Contact Details</mat-card-subtitle>
-            <p> Email : {{this.dataSource.contact_details.user_email_address}} </p>
-            <p>phone : {{this.dataSource.contact_details.user_phone}} </p>
-            <p>Address : {{this.dataSource.contact_details.user_address}} </p>
+            <mat-card-subtitle>EMAIL :</mat-card-subtitle>
+            <div></div>
+            <label>{{ dataSource.contact_details.user_email_address}}</label>
+            <div class="spacer"></div>
+            <mat-card-subtitle>PHONE :</mat-card-subtitle>
+            <div></div>
+            <label>{{ dataSource.contact_details.user_phone}}</label>
+            <div class="spacer"></div>
+            <mat-card-subtitle>LOCATION :</mat-card-subtitle>
+            <div></div>
+            <label>Pakistan</label>
         </mat-card-content>
         <!-- <mat-card-actions>
             <button matButton>LIKE</button>
             <button matButton>SHARE</button>
         </mat-card-actions> -->
     </mat-card>
+    <mat-card style="width: 100%;">
+        <div class="cardcontenthead">
+            <mat-card-header>
+                <mat-card-title>
+                    Tellus about yourself
+                </mat-card-title>
+            </mat-card-header>
+            <button (click)="onEdit(dataSource)" matIconButton aria-label="Example icon button with a vertical three dot icon">
+                <mat-icon style="color: cyan;">edit</mat-icon>
+            </button>
+        </div>
+
+        <mat-card-content>
+            <div class="cardcontent">
+                <p> <b>Title : </b> MR./MS.</p>
+                <p><b>First Name : </b> {{ dataSource.personal_details.user_first_name}}
+                </p>
+                <p><b>Last Name : </b> {{ dataSource.personal_details.user_last_name}}
+                </p>
+                <p> <b>Phone : </b> {{ dataSource.contact_details.user_phone}} </p>
+                <p> <b>Gender : </b> {{ dataSource.personal_details.user_gender}} </p>
+                <p>
+                    <b>Date of Birth : </b> {{ dataSource.personal_details.user_dob |
+                    date}}
+                </p>
+                <p> <b>Email : </b> {{ dataSource.contact_details.user_email_address}}
+                </p>
+                <p><b>Address : </b> {{ dataSource.contact_details.user_address}} </p>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </div>
+} @else if (spinnerService.get()) {
+    <div class="container" >
+        <P>Loading....</P>
+    </div>
+} @else {
+    <div class="container" >
+        <P>Loading....</P>
+    </div>
+}

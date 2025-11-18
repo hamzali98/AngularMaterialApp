@@ -3,7 +3,7 @@
     <p>
       User Data Table
     </p>
-    <button (click)="openDialog()" matButton="elevated" >Add User</button>
+    <button (click)="onAdd()" matButton="elevated" >Add User</button>
   </div>
   <table mat-table [dataSource]="dataSource">
 
@@ -54,21 +54,21 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
-        <button matIconButton>
+        <button matIconButton (click)="onEdit(element)" >
           <mat-icon style="color: lightblue;">edit</mat-icon>
         </button>
         <button matIconButton (click)="onDelete(element)" >
           <mat-icon style="color: lightsalmon;">delete</mat-icon>
         </button>
-        <button matIconButton>
+        <button matIconButton (click)="onView(element)" >
           <mat-icon style="color: lightgreen;">visibility</mat-icon>
         </button>
       </td>
       <!-- <td mat-cell *matCellDef="let element"> {{element.contact_details.user_address}} </td> -->
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
