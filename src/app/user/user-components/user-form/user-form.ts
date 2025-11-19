@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, viewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,9 +12,14 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatSnackBar } from '@angular/material/snack-bar';
+// import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UserHttpService } from '@app/user/user-services/user-http-service/user-http.service';
+import { SnackbarService } from '@app/services/snackservice/snackbar.service';
+import { SpinnerService } from '@app/services/spinner/spinner.service';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { UsertableComponent } from '../user-table/user-table.component';
+import { userInterface } from '@app/user/interface/user-interface';
 
 interface Gender {
   value: string;
@@ -36,12 +41,13 @@ interface Gender {
     MatExpansionModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   templateUrl: './user-form.html',
   styleUrl: './user-form.scss',
 })
-export class UserForm {
+export class UserForm implements OnInit {
 
   genders: Gender[] = [
     { value: 'male', viewValue: 'Male' },
@@ -50,10 +56,14 @@ export class UserForm {
   ];
 
   private httpService = inject(UserHttpService);
-  private _snackBar = inject(MatSnackBar);
+  private snackbarService = inject(SnackbarService);
   private router = inject(Router);
+  private spinnerService = inject(SpinnerService);
+  private matdialogRef = inject(MatDialog);
 
   userForm: FormGroup;
+
+  userEditingData!: userInterface;
 
   constructor() {
     this.userForm = new FormGroup({
@@ -76,36 +86,68 @@ export class UserForm {
     this.userForm.markAllAsTouched();
   }
 
-  addUser() {
-    this.httpService.addUser(this.userForm.value).subscribe({
-      next: (res) => {
-        console.log(res);
-        this._snackBar.open('User Submitted', '', {
-          duration: 5000,
-          panelClass: ["success"]
-        });
-        this.router.navigate(['/']);
+  ngOnInit(): void {
+    console.log("init", this.userEditingData);
+    if (this.userEditingData) {
+      this.patchEditingData();
+    }
+  }
+
+  patchEditingData() {
+    this.userForm.patchValue({
+      personal_details: {
+        user_first_name: this.userEditingData.personal_details.user_first_name,
+        user_last_name: this.userEditingData.personal_details.user_last_name,
+        user_gender: this.userEditingData.personal_details.user_gender,
+        user_dob: this.userEditingData.personal_details.user_dob,
       },
-      error: (err) => {
-        console.log(err);
-        this._snackBar.open('User Submitted', '', {
-          duration: 5000,
-          panelClass: ["error"]
-        });
+      contact_details: {
+        user_email_address: this.userEditingData.contact_details.user_email_address,
+        user_phone: this.userEditingData.contact_details.user_phone,
+        user_address: this.userEditingData.contact_details.user_address,
       }
     });
+  }
 
-    // if (this.userForm.invalid) {
-    //   const snackRef = this._snackBar.open('Form Invalid', 'Dismis', {
-    //     horizontalPosition: "center",
-    //     verticalPosition: "bottom",
-    //   });
-    // } else {
-    //   this._snackBar.open('form Submitted!', 'Dismis', {
-    //     horizontalPosition: "center",
-    //     verticalPosition: "bottom",
-    //   });
-    // }
+  addUser() {
+    // console.log(this.userForm.value);
+    this.spinnerService.show();
+    if (this.userEditingData) {
+      this.httpService.updateUser(this.userEditingData.id, this.userForm.value).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.snackbarService.showSnackBar("Success!");
+        },
+        error: (err) => {
+          console.log(err);
+          this.snackbarService.showSnackBar("Error!");
+        },
+        complete: () => {
+          this.onCancel();
+          this.spinnerService.hide();
+        }
+      });
+    } else {
+      this.httpService.addUser(this.userForm.value).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.snackbarService.showSnackBar("Success!");
+        },
+        error: (err) => {
+          console.log(err);
+          this.snackbarService.showSnackBar("Error!");
+        },
+        complete: () => {
+          this.httpService.getUsers();
+          this.onCancel();
+          this.spinnerService.hide();
+        }
+      });
+    }
+  }
+
+  onCancel() {
+    this.matdialogRef.closeAll();
   }
 
 }

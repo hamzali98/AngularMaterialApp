@@ -1,4 +1,4 @@
-import { Component, inject, signal, viewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, inject, signal, viewChild } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import {
   RouterOutlet,
@@ -16,7 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
-
+import { DataServiceService } from '@app/user/user-services/user-profile-data-service/data-service.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -36,17 +36,35 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ]
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnInit, AfterViewInit {
 
+  userName = signal("");
 
   private breakpointObserver = inject(BreakpointObserver);
-  private routerRef = inject(Router)
+  private routerRef = inject(Router);
+  private dataService = inject(DataServiceService);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
+
+    ngOnInit(): void {}
+
+    ngAfterViewInit(): void {
+      this.getUserData();
+    }
+
+    getUserData(){
+      this.dataService.getUserData().subscribe({
+        next:(val)=>{
+          if(val){
+            this.userName.set(val.personal_details.user_first_name);
+          }
+        }
+      });
+    }
 
   onClick() {
     this.routerRef.navigate(['/profile']);

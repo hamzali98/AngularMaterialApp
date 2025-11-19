@@ -20,9 +20,12 @@ export class UserHttpService {
     return this.httpClient.get<any>(`${this.BaseUrl}/${userid}`,)
   }
 
-
   addUser(user: Object) {
     return this.httpClient.post<any>(this.BaseUrl, user);
+  }
+
+  updateUser(userId: string, user : Object){
+    return this.httpClient.put<any>(`${this.BaseUrl}/${userId}`, user);
   }
 
   deleteUser(userId: string) {

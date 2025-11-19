@@ -1,0 +1,99 @@
+<!-- @if(dataSource){ -->
+<div class="profile-container">
+    <!-- profile side menu card -->
+    <div class="cardcontenthead">
+        <mat-card-header>
+            <mat-card-title>
+                User Detailed View
+            </mat-card-title>
+        </mat-card-header>
+        <!-- <button (click)="onEdit(dataSource)" matIconButton
+                    aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon style="color: cyan;">edit</mat-icon>
+                </button> -->
+    </div>
+    <mat-dialog-content>
+        <!-- <mat-card style="width: auto;">
+        <mat-card-header>
+            <mat-card-title>
+                Personal Information
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-header>
+            <div mat-card-avatar class="avatar-image">
+                <button matIconButton class="profileeditbtn" aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon  style="color: cyan; ">camera_alt</mat-icon>
+                </button>
+            </div>
+            <div class="namecontainer">
+                <mat-card-title>{{dataSource.personal_details.user_first_name}}
+                    {{dataSource.personal_details.user_last_name}}</mat-card-title>
+                <mat-card-subtitle>Lorem Ipsem</mat-card-subtitle>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-card-subtitle>EMAIL :</mat-card-subtitle>
+            <div></div>
+            <label>{{ dataSource.contact_details.user_email_address}}</label>
+            <div class="spacer"></div>
+            <mat-card-subtitle>PHONE :</mat-card-subtitle>
+            <div></div>
+            <label>{{ dataSource.contact_details.user_phone}}</label>
+            <div class="spacer"></div>
+            <mat-card-subtitle>LOCATION :</mat-card-subtitle>
+            <div></div>
+            <label>Pakistan</label>
+        </mat-card-content>
+    </mat-card> -->
+        <mat-card style="width: auto;">
+            <!-- <div class="cardcontenthead">
+                <mat-card-header>
+                    <mat-card-title>
+                        User Detailed View
+                    </mat-card-title>
+                </mat-card-header>
+                <button (click)="onEdit(dataSource)" matIconButton
+                    aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon style="color: cyan;">edit</mat-icon>
+                </button>
+            </div> -->
+
+            <mat-card-content>
+                <div class="cardcontent">
+                    <p><b>First Name : </b> {{ dataSource.personal_details.user_first_name}}
+                    </p>
+                    <p><b>Last Name : </b> {{ dataSource.personal_details.user_last_name}}
+                    </p>
+                    <p> <b>Phone : </b> {{ dataSource.contact_details.user_phone}} </p>
+                    <p> <b>Gender : </b> {{ dataSource.personal_details.user_gender}} </p>
+                    <p>
+                        <b>Date of Birth : </b> {{ dataSource.personal_details.user_dob |
+                        date}}
+                    </p>
+                    <p> <b>Email : </b> {{ dataSource.contact_details.user_email_address}}
+                    </p>
+                    <p style="width: auto;"><b>Address : </b> {{ dataSource.contact_details.user_address}} </p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </mat-dialog-content>
+    <mat-dialog-actions MatDialogActions.align="end">
+        <button matButton mat-dialog-close>Cancel</button>
+        <!-- @if(userEditingData){
+                <button [disabled]="userForm.invalid" matButton="filled" matTooltip="Update User"
+                type="submit">Update</button>
+            } @else {
+                <button [disabled]="userForm.invalid" matButton="filled" matTooltip="Submit Details"
+                type="submit">Submit</button>
+            } -->
+    </mat-dialog-actions>
+</div>
+<!-- } @else if (spinnerService.get()) {
+    <div class="container" >
+        <P>Loading....</P>
+    </div>
+} @else {
+    <div class="container" >
+        <P>Loading....</P>
+    </div>
+} -->
