@@ -1,0 +1,42 @@
+<div class="loginpage">
+    <!-- <p>
+        Go First do login
+    </p>
+    <button (click)="onClick()" >Login</button> -->
+    <!-- [formGroup]="loginForm"  -->
+
+    <!-- <form [formGroup]="loginForm" (ngSubmit)="OnFormSubmit()"> -->
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    Login
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput required placeholder="Enter Email" [formControl]="login_email">
+                    <mat-icon matSuffix>email</mat-icon>
+                    <mat-hint>Enter login email</mat-hint>
+                    @if (login_email.hasError("required") || login_email.touched) {
+                    <mat-error>Login email Required!</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput required placeholder="Enter Password" [formControl]="login_password">
+                    <mat-icon matSuffix>password</mat-icon>
+                    <mat-hint>Enter login password</mat-hint>
+                    @if (login_password.hasError("required") || login_password.touched) {
+                    <mat-error>Login password Required!</mat-error>
+                    }
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+                <button (click)="OnFormSubmit()" [disabled]="login_email.invalid" mat-raised-button>
+                    <mat-icon>login</mat-icon>Login
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    <!-- </form> -->
+</div>

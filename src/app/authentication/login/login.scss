@@ -1,0 +1,36 @@
+.loginpage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: auto;
+    // background-color: grey;
+    // position: fixed;
+    // top: 0;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
+    // z-index: 99999;
+}
+
+mat-card{
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card-content{
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field{
+    margin: 10px;
+}
+
+mat-card-actions{
+    width: 100%;
+    justify-content: end;
+    align-items: end;
+}

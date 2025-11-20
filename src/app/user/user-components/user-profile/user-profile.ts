@@ -22,67 +22,29 @@ export class UserProfile implements OnInit {
   dataSource!: userInterface;
 
   private matDialog = inject(MatDialog);
-  spinnerService = inject(SpinnerService);
-  private httpService = inject(UserHttpService);
-  private dataService = inject(DataServiceService);
-  // serviceCenter = inject(CenterService);
+  serviceCenter = inject(CenterService);
 
   constructor() { }
 
   ngOnInit(): void {
-    this.getUserData();
+    this.customInit();
   }
 
-  getUserData() {
-    // this.spinnerService.show();
-    this.dataService.getUserData().subscribe({
-      next: (value) => {
-        if (value) {
-          console.log("Data in getting data service", value);
-          this.dataSource = value;
-        // this.spinnerService.hide();
-        }
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        // this.spinnerService.hide();
-      }
-    });
+  customInit(){
+    this.serviceCenter.getLoggedUserFunc();
+    setTimeout(() => {
+      this.dataSource = this.serviceCenter.userData();
+    }, 1000);
   }
 
   onEdit(data: userInterface) {
     const dialogRef = this.matDialog.open(UserForm);
     dialogRef.componentInstance.userEditingData = data;
     dialogRef.afterClosed().subscribe({
-      next: (val) => {
-        this.getuserAfterEdit(data.id);
-      },
-      error: (err) => {
-        console.log(err);
+      next:() => {
+        this.customInit();
       }
     })
   }
-
-  getuserAfterEdit(id: string) {
-    this.spinnerService.show();
-    this.httpService.getUser(id).subscribe({
-      next: (res) => {
-        this.dataService.setUserData(res);
-        this.spinnerService.hide();
-
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        this.getUserData();
-        this.spinnerService.hide();
-      }
-    });
-  }
-
-
 
 }

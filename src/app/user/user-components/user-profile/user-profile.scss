@@ -6,6 +6,18 @@
   margin: 1rem;
 }
 
+.uppercard{
+  display: flex; 
+  flex-direction: column;
+}
+
+.maincardheader{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
 .avatar-image {
   background-image: url('https://material.angular.dev/assets/img/examples/shiba1.jpg');
   background-size: cover;
@@ -20,7 +32,7 @@
 .profileeditbtn {
   // background-color: var(--mat-sys-surface);
   background-color: transparent;
-  
+
   height: 32px;
   width: 32px;
   // padding-right: 10px;
@@ -46,29 +58,17 @@ mat-card-title {
   color: var(--mat-sys-primary);
 }
 
-@media (width <=1000px) {
-
-  // .namecontainer{
-  //   padding: 0;
-  // }
-  mat-card-header {
-    display: flex;
-    flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
-  }
+mat-card-header {
+  display: flex;
+  flex-direction: row;
+  width: 250px;
+  justify-content: center;
+  align-items: center;
 }
-
-// mat-card-header{
-//       display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-// }
 
 mat-card {
   margin: 0.5rem;
-  // height: 25rem;
+  height: 100%;
 }
 
 .cardcontenthead {
@@ -104,3 +104,42 @@ mat-card {
 // mat-card-subtitle{
 //   margin: 5px;
 // }
+
+@media (width <=700px) {
+
+  .uppercard{
+  display: flex; 
+  flex-direction: row;
+}
+
+.profile-container{
+  flex-direction: column;
+}
+
+.maincardheader{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card{
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+  mat-card-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .namecontainer {
+    padding: 5;
+    margin: 0px;
+  }
+
+}

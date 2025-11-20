@@ -20,6 +20,7 @@ import { SpinnerService } from '@app/services/spinner/spinner.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { UsertableComponent } from '../user-table/user-table.component';
 import { userInterface } from '@app/user/interface/user-interface';
+import { CenterService } from '@app/services/servicecenter/center.service';
 
 interface Gender {
   value: string;
@@ -55,15 +56,14 @@ export class UserForm implements OnInit {
     { value: 'others', viewValue: 'Others' },
   ];
 
-  private httpService = inject(UserHttpService);
-  private snackbarService = inject(SnackbarService);
-  private router = inject(Router);
-  private spinnerService = inject(SpinnerService);
-  private matdialogRef = inject(MatDialog);
-
   userForm: FormGroup;
-
   userEditingData!: userInterface;
+
+  // private httpService = inject(UserHttpService);
+  // private snackbarService = inject(SnackbarService);
+  // private spinnerService = inject(SpinnerService);
+  // private matdialogRef = inject(MatDialog);
+  private serviceCenter = inject(CenterService);
 
   constructor() {
     this.userForm = new FormGroup({
@@ -109,45 +109,45 @@ export class UserForm implements OnInit {
     });
   }
 
-  addUser() {
-    // console.log(this.userForm.value);
-    this.spinnerService.show();
+  OnFormSubmit() {
     if (this.userEditingData) {
-      this.httpService.updateUser(this.userEditingData.id, this.userForm.value).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.snackbarService.showSnackBar("Success!");
-        },
-        error: (err) => {
-          console.log(err);
-          this.snackbarService.showSnackBar("Error!");
-        },
-        complete: () => {
-          this.onCancel();
-          this.spinnerService.hide();
-        }
-      });
+      this.serviceCenter.editTableDataFunc(this.userEditingData.id, this.userForm);
     } else {
-      this.httpService.addUser(this.userForm.value).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.snackbarService.showSnackBar("Success!");
-        },
-        error: (err) => {
-          console.log(err);
-          this.snackbarService.showSnackBar("Error!");
-        },
-        complete: () => {
-          this.httpService.getUsers();
-          this.onCancel();
-          this.spinnerService.hide();
-        }
-      });
+      this.serviceCenter.addTableDataFunc(this.userForm);
     }
-  }
-
-  onCancel() {
-    this.matdialogRef.closeAll();
+    // this.spinnerService.show();
+    // if (this.userEditingData) {
+    //   this.httpService.updateUser(this.userEditingData.id, this.userForm.value).subscribe({
+    //     next: (res) => {
+    //       console.log(res);
+    //       this.snackbarService.showSnackBar("Success!");
+    //     },
+    //     error: (err) => {
+    //       console.log(err);
+    //       this.snackbarService.showSnackBar("Error!");
+    //     },
+    //     complete: () => {
+    //       this.onCancel();
+    //       this.spinnerService.hide();
+    //     }
+    //   });
+    // } else {
+    //   this.httpService.addUser(this.userForm.value).subscribe({
+    //     next: (res) => {
+    //       console.log(res);
+    //       this.snackbarService.showSnackBar("Success!");
+    //     },
+    //     error: (err) => {
+    //       console.log(err);
+    //       this.snackbarService.showSnackBar("Error!");
+    //     },
+    //     complete: () => {
+    //       this.httpService.getUsers();
+    //       this.onCancel();
+    //       this.spinnerService.hide();
+    //     }
+    //   });
+    // }
   }
 
 }

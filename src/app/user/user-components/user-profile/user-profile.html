@@ -1,24 +1,28 @@
 @if(dataSource){
 <div class="profile-container">
     <!-- profile side menu card -->
-    <mat-card style="width: 350px;">
-        <mat-card-header>
-            <mat-card-title>
-                Personal Information
-            </mat-card-title>
-        </mat-card-header>
-        <mat-card-header>
-            <div mat-card-avatar class="avatar-image">
-                <button matIconButton class="profileeditbtn" aria-label="Example icon button with a vertical three dot icon">
-                    <mat-icon  style="color: cyan; ">camera_alt</mat-icon>
-                </button>
-            </div>
-            <div class="namecontainer">
-                <mat-card-title>{{dataSource.personal_details.user_first_name}}
-                    {{dataSource.personal_details.user_last_name}}</mat-card-title>
-                <mat-card-subtitle>Lorem Ipsem</mat-card-subtitle>
-            </div>
-        </mat-card-header>
+    <mat-card class="uppercard" >
+        <div class="maincardheader">
+            <mat-card-header>
+                <mat-card-title>
+                    Personal Information
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-header>
+                <div mat-card-avatar class="avatar-image">
+                    <button matIconButton class="profileeditbtn"
+                        aria-label="Example icon button with a vertical three dot icon">
+                        <mat-icon style="color: cyan; ">camera_alt</mat-icon>
+                    </button>
+                </div>
+                <div class="namecontainer">
+                    <mat-card-title>{{dataSource.personal_details.user_first_name}}
+                        {{dataSource.personal_details.user_last_name}}</mat-card-title>
+                    <mat-card-subtitle>Lorem Ipsem</mat-card-subtitle>
+                </div>
+            </mat-card-header>
+        </div>
+
         <mat-card-content>
             <mat-card-subtitle>EMAIL :</mat-card-subtitle>
             <div></div>
@@ -32,6 +36,7 @@
             <div></div>
             <label>Pakistan</label>
         </mat-card-content>
+
         <!-- <mat-card-actions>
             <button matButton>LIKE</button>
             <button matButton>SHARE</button>
@@ -44,7 +49,8 @@
                     Tellus about yourself
                 </mat-card-title>
             </mat-card-header>
-            <button (click)="onEdit(dataSource)" matIconButton aria-label="Example icon button with a vertical three dot icon">
+            <button (click)="onEdit(dataSource)" matIconButton
+                aria-label="Example icon button with a vertical three dot icon">
                 <mat-icon style="color: cyan;">edit</mat-icon>
             </button>
         </div>
@@ -69,12 +75,12 @@
         </mat-card-content>
     </mat-card>
 </div>
-} @else if (spinnerService.get()) {
-    <div class="container" >
-        <P>Loading....</P>
-    </div>
+} @else if (serviceCenter.spinnerServiceGetter().get()) {
+<div class="container">
+    <P>Loading....</P>
+</div>
 } @else {
-    <div class="container" >
-        <P>Loading....</P>
-    </div>
+<div class="container">
+    <P>Loading....</P>
+</div>
 }

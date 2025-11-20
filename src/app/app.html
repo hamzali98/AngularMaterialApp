@@ -1,6 +1,11 @@
+@if(serviceCenter.authCheck()){
 <app-sidenav></app-sidenav>
+} @else {
+  <app-login></app-login>
+}
 
-@if(spinnerService.get()) {
+
+@if(serviceCenter.spinnerServiceGetter().get()) {
 <div class="spinner">
   <mat-spinner></mat-spinner>
 </div>

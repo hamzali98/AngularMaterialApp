@@ -7,18 +7,18 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataServiceService {
 
-  private user! : userInterface; 
+  private user!: userInterface;
 
   private _userData = new BehaviorSubject<userInterface>(this.user);
 
-constructor() { }
+  constructor() { }
 
-setUserData(user: userInterface){
-  this._userData.next(user);
-}
+  setUserData(user: userInterface) {
+    this._userData.next(user);
+  }
 
-getUserData(){
-  return this._userData.asObservable();
-}
+  getUserData() {
+    return this._userData.asObservable();
+  }
 
 }
