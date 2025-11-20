@@ -9,123 +9,11 @@
         "user_dob": "2025-11-20T19:00:00.000Z"
       },
       "contact_details": {
-        "user_email_address": "email@gmil.com",
+        "user_email_address": "hamzali@gmail.com",
         "user_phone": "68716654684",
-        "user_address": "fully updated home address is here"
+        "user_address": "home address"
       },
       "id": "45b9"
-    },
-    {
-      "id": "ed78",
-      "personal_details": {
-        "user_first_name": "user 3",
-        "user_last_name": "3",
-        "user_gender": "male",
-        "user_dob": "2025-01-01T00:00:00.000Z"
-      },
-      "contact_details": {
-        "user_email_address": "users@email.com",
-        "user_phone": "316487165",
-        "user_address": "home address of users"
-      }
-    },
-    {
-      "id": "9d65",
-      "personal_details": {
-        "user_first_name": "user 3",
-        "user_last_name": "3",
-        "user_gender": "male",
-        "user_dob": "2025-01-01T00:00:00.000Z"
-      },
-      "contact_details": {
-        "user_email_address": "users@email.com",
-        "user_phone": "316487165",
-        "user_address": "home address of users"
-      }
-    },
-    {
-      "id": "e5d9",
-      "personal_details": {
-        "user_first_name": "user 3",
-        "user_last_name": "3",
-        "user_gender": "male",
-        "user_dob": "2025-01-01T00:00:00.000Z"
-      },
-      "contact_details": {
-        "user_email_address": "users@email.com",
-        "user_phone": "316487165",
-        "user_address": "home address of users"
-      }
-    },
-    {
-      "id": "fa89",
-      "personal_details": {
-        "user_first_name": "user 3",
-        "user_last_name": "3",
-        "user_gender": "male",
-        "user_dob": "2025-01-01T00:00:00.000Z"
-      },
-      "contact_details": {
-        "user_email_address": "users@email.com",
-        "user_phone": "316487165",
-        "user_address": "home address of users"
-      }
-    },
-    {
-      "id": "9aa6",
-      "personal_details": {
-        "user_first_name": "user 3",
-        "user_last_name": "3",
-        "user_gender": "male",
-        "user_dob": "2025-01-01T00:00:00.000Z"
-      },
-      "contact_details": {
-        "user_email_address": "users@email.com",
-        "user_phone": "316487165",
-        "user_address": "home address of users"
-      }
-    },
-    {
-      "id": "b99e",
-      "personal_details": {
-        "user_first_name": "user 3",
-        "user_last_name": "3",
-        "user_gender": "male",
-        "user_dob": "2025-01-01T00:00:00.000Z"
-      },
-      "contact_details": {
-        "user_email_address": "users@email.com",
-        "user_phone": "316487165",
-        "user_address": "home address of users"
-      }
-    },
-    {
-      "id": "399c",
-      "personal_details": {
-        "user_first_name": "user 3",
-        "user_last_name": "3",
-        "user_gender": "male",
-        "user_dob": "2025-01-01T00:00:00.000Z"
-      },
-      "contact_details": {
-        "user_email_address": "users@email.com",
-        "user_phone": "316487165",
-        "user_address": "home address of users"
-      }
-    },
-    {
-      "id": "94fe",
-      "personal_details": {
-        "user_first_name": "user 3",
-        "user_last_name": "3",
-        "user_gender": "male",
-        "user_dob": "2025-01-01T00:00:00.000Z"
-      },
-      "contact_details": {
-        "user_email_address": "users@email.com",
-        "user_phone": "316487165",
-        "user_address": "home address of users"
-      }
     },
     {
       "id": "46bd",
@@ -170,18 +58,18 @@
       "id": "230a"
     },
     {
-      "id": "9687",
       "personal_details": {
-        "user_first_name": "new",
-        "user_last_name": "user",
-        "user_gender": "male",
-        "user_dob": "1998-03-04T19:00:00.000Z"
+        "user_first_name": "user is",
+        "user_last_name": "is here",
+        "user_gender": "others",
+        "user_dob": "2025-11-06T19:00:00.000Z"
       },
       "contact_details": {
-        "user_email_address": "newuser@email.com",
-        "user_phone": "3033468794",
-        "user_address": "home address of new user"
-      }
+        "user_email_address": "userishere@email.com",
+        "user_phone": "165487120",
+        "user_address": "home address of user is here edited."
+      },
+      "id": "428d"
     }
   ]
 }

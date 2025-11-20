@@ -6,30 +6,35 @@ import { inject, Injectable } from '@angular/core';
 })
 export class UserHttpService {
 
-  BaseUrl: string = "http://localhost:3000/usersData";
+  BASE_URL: string = "http://localhost:3000/usersData";
 
   private httpClient = inject(HttpClient);
 
   constructor() { }
 
+  getLogin(email: string| null) {
+    console.log(email);
+    return this.httpClient.get<any>(`${this.BASE_URL}?email=${email}`);
+  }
+
   getUsers() {
-    return this.httpClient.get<any>(this.BaseUrl, { observe: "response" as const });
+    return this.httpClient.get<any>(this.BASE_URL, { observe: "response" as const });
   }
 
   getUser(userid: string) {
-    return this.httpClient.get<any>(`${this.BaseUrl}/${userid}`,)
+    return this.httpClient.get<any>(`${this.BASE_URL}/${userid}`,)
   }
 
   addUser(user: Object) {
-    return this.httpClient.post<any>(this.BaseUrl, user);
+    return this.httpClient.post<any>(this.BASE_URL, user);
   }
 
-  updateUser(userId: string, user : Object){
-    return this.httpClient.put<any>(`${this.BaseUrl}/${userId}`, user);
+  updateUser(userId: string, user: Object) {
+    return this.httpClient.put<any>(`${this.BASE_URL}/${userId}`, user);
   }
 
   deleteUser(userId: string) {
-    return this.httpClient.delete<any>(`${this.BaseUrl}/${userId}`);
+    return this.httpClient.delete<any>(`${this.BASE_URL}/${userId}`);
   }
 
 }

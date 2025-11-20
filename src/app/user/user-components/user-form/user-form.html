@@ -1,6 +1,6 @@
 <div class="container">
     <!-- main form -->
-    <form [formGroup]="userForm" (ngSubmit)="addUser()">
+    <form [formGroup]="userForm" (ngSubmit)="OnFormSubmit()">
         <!-- outer parent card -->
         <!-- <mat-card appearance="outlined">
             <mat-card-header>
@@ -232,10 +232,10 @@
         <mat-dialog-actions MatDialogActions.align="end">
             <button matButton mat-dialog-close>Cancel</button>
             @if(userEditingData){
-                <button [disabled]="userForm.invalid" matButton="filled" matTooltip="Update User"
+            <button [disabled]="userForm.invalid" matButton="filled" matTooltip="Update User"
                 type="submit">Update</button>
             } @else {
-                <button [disabled]="userForm.invalid" matButton="filled" matTooltip="Submit Details"
+            <button [disabled]="userForm.invalid" matButton="filled" matTooltip="Submit Details"
                 type="submit">Submit</button>
             }
             <!-- <button [disabled]="userForm.invalid" matButton="filled" matTooltip="Submit Details"

@@ -29,12 +29,11 @@ export class UsertableComponent implements AfterViewInit, OnInit {
   dataSource = new MatTableDataSource<userInterface>([]);
 
   private matDialog = inject(MatDialog);
-  servicecenter = inject(CenterService);
+  serviceCenter = inject(CenterService);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor() { }
-
 
   ngOnInit() {
     this.getData();
@@ -45,9 +44,9 @@ export class UsertableComponent implements AfterViewInit, OnInit {
   }
 
   getData() {
-    this.servicecenter.getTableData();
+    this.serviceCenter.getTableDataFunc();
     setTimeout(() => {
-      this.dataSource.data = this.servicecenter.tableData();
+      this.dataSource.data = this.serviceCenter.tableData();
     }, 1200);
   }
 
@@ -77,7 +76,8 @@ export class UsertableComponent implements AfterViewInit, OnInit {
   }
 
   onDelete(data: userInterface) {
-    this.servicecenter.deleteTableData(data);
+    this.serviceCenter.deleteTableDataFunc(data);
+    this.getData();
   }
 
   onView(data: userInterface) {
