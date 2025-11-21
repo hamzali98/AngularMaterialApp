@@ -16,7 +16,7 @@ export class SpinnerService {
   hide() {
     setTimeout(() => {
       this.loader.set(false);
-    }, 3000);
+    }, 1200);
     // this.loader.set(false);
   }
 
