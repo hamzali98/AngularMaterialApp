@@ -92,6 +92,23 @@ body {
   background-color: rgba(0, 0, 0, 0.233);
 }
 
-// .parentformcard {
-//   display
-// }
+// snackbar styles
+.success-snackbar .mat-mdc-snackbar-surface {
+  background-color: #4caf50 !important;
+  color: black !important;
+}
+
+.error-snackbar .mat-mdc-snackbar-surface {
+  background-color: #f44336 !important;
+  color: black !important;
+}
+
+.warning-snackbar .mat-mdc-snackbar-surface {
+  background-color: #ff9800 !important;
+  color: black !important;
+}
+
+.info-snackbar .mat-mdc-snackbar-surface {
+  background-color: #2196f3 !important;
+  color: white !important;
+}

@@ -1,6 +1,5 @@
 import { Component, inject, OnInit, viewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,21 +7,22 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 // import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { UserHttpService } from '@app/user/user-services/user-http-service/user-http.service';
-import { SnackbarService } from '@app/services/snackservice/snackbar.service';
-import { SpinnerService } from '@app/services/spinner/spinner.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { UsertableComponent } from '../user-table/user-table.component';
 import { userInterface } from '@app/user/interface/user-interface';
 import { CenterService } from '@app/services/servicecenter/center.service';
+import { DataServiceService } from '@app/user/user-services/user-profile-data-service/data-service.service';
 
 interface Gender {
+  value: string;
+  viewValue: string;
+}
+
+interface role {
   value: string;
   viewValue: string;
 }
@@ -56,6 +56,12 @@ export class UserForm implements OnInit {
     { value: 'others', viewValue: 'Others' },
   ];
 
+  roles: role[] = [
+    { value: 'superadmin', viewValue: 'Super Admin' },
+    { value: 'admin', viewValue: 'Admin' },
+    { value: 'user', viewValue: 'User' },
+  ];
+
   userForm: FormGroup;
   userEditingData!: userInterface;
 
@@ -63,10 +69,12 @@ export class UserForm implements OnInit {
   // private snackbarService = inject(SnackbarService);
   // private spinnerService = inject(SpinnerService);
   // private matdialogRef = inject(MatDialog);
+  dataService = inject(DataServiceService);
   private serviceCenter = inject(CenterService);
 
   constructor() {
     this.userForm = new FormGroup({
+      user_role: new FormControl('', Validators.required),
       personal_details: new FormGroup({
         user_first_name: new FormControl('', Validators.required),
         user_last_name: new FormControl('', Validators.required),
@@ -95,6 +103,7 @@ export class UserForm implements OnInit {
 
   patchEditingData() {
     this.userForm.patchValue({
+      user_role: this.userEditingData.user_role,
       personal_details: {
         user_first_name: this.userEditingData.personal_details.user_first_name,
         user_last_name: this.userEditingData.personal_details.user_last_name,

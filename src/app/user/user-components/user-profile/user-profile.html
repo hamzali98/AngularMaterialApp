@@ -46,7 +46,7 @@
         <div class="cardcontenthead">
             <mat-card-header>
                 <mat-card-title>
-                    Tellus about yourself
+                    User profile details
                 </mat-card-title>
             </mat-card-header>
             <button (click)="onEdit(dataSource)" matIconButton
@@ -57,7 +57,7 @@
 
         <mat-card-content>
             <div class="cardcontent">
-                <p> <b>Title : </b> MR./MS.</p>
+                <p> <b>Role : </b> {{dataSource.user_role}}</p>
                 <p><b>First Name : </b> {{ dataSource.personal_details.user_first_name}}
                 </p>
                 <p><b>Last Name : </b> {{ dataSource.personal_details.user_last_name}}
