@@ -1,0 +1,11 @@
+<div class="mat-elevation-z8">
+  <div class="buttondiv">
+    <p>
+      Product Data Table
+    </p>
+    @if(dataService.getLocalUserRole()?.toString() === 'superadmin'){
+    <button (click)="onAdd()" matButton="elevated">Add Product</button>
+    }
+  </div>
+<p>product table works!</p>
+</div>
