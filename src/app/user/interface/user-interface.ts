@@ -1,6 +1,6 @@
 export interface userInterface {
     id: string,
-    role: string,
+    user_role: string,
     personal_details: {
         user_first_name: string,
         user_last_name: string,

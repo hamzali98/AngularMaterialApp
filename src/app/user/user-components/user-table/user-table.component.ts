@@ -2,16 +2,14 @@ import { AfterViewInit, OnInit, Component, inject, ViewChild, signal, computed }
 import { DatePipe } from '@angular/common';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { UserHttpService } from '@app/user/user-services/user-http-service/user-http.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { userInterface } from '@app/user/interface/user-interface';
-import { SpinnerService } from '@app/services/spinner/spinner.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UserForm } from '../user-form/user-form';
-import { SnackbarService } from '@app/services/snackservice/snackbar.service';
 import { CenterService } from '@app/services/servicecenter/center.service';
 import { UserView } from '../user-view/user-view';
+import { DataServiceService } from '@app/user/user-services/user-profile-data-service/data-service.service';
 
 /**
  * @title Table with pagination
@@ -24,12 +22,13 @@ import { UserView } from '../user-view/user-view';
 })
 export class UsertableComponent implements AfterViewInit, OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'gender', 'dob', 'email', 'phone', 'address', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'address', 'actions'];
 
   dataSource = new MatTableDataSource<userInterface>([]);
 
   private matDialog = inject(MatDialog);
   serviceCenter = inject(CenterService);
+  dataService = inject(DataServiceService);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

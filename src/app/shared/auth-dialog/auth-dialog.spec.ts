@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserViewTabs } from './user-view-tabs';
+import { AuthDialog } from './auth-dialog';
 
-describe('UserViewTabs', () => {
-  let component: UserViewTabs;
-  let fixture: ComponentFixture<UserViewTabs>;
+describe('AuthDialog', () => {
+  let component: AuthDialog;
+  let fixture: ComponentFixture<AuthDialog>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserViewTabs]
+      imports: [AuthDialog]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserViewTabs);
+    fixture = TestBed.createComponent(AuthDialog);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

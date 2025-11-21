@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { DataServiceService } from '@app/user/user-services/user-profile-data-service/data-service.service';
-import { AuthService } from '@app/authentication/auth/auth.service';
+// import { AuthService } from '@app/authentication/auth/auth.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -44,7 +44,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   private breakpointObserver = inject(BreakpointObserver);
   private routerRef = inject(Router);
   private dataService = inject(DataServiceService);
-  private authService = inject(AuthService);
+  // private authService = inject(AuthService);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -73,8 +73,8 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   }
 
   onLogout(){
-    this.authService.setLogout();
-    // this.routerRef.navigate(['login']);
+    this.dataService.setLogout();
+    this.routerRef.navigate(['']);
 
   }
 }

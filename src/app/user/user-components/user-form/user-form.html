@@ -225,11 +225,27 @@
                             <mat-error>User Home Address Required!</mat-error>
                             }
                         </mat-form-field>
+
                     </mat-card-content>
                 </mat-card>
             </mat-dialog-content>
         </mat-card>
         <mat-dialog-actions MatDialogActions.align="end">
+            @if(dataService.getLocalUserRole()?.toString() === 'superadmin'){
+            <mat-form-field appearance="outline">
+                <mat-label>Role</mat-label>
+                <mat-select required placeholder="select Role" formControlName="user_role">
+                    @for (role of roles; track role) {
+                    <mat-option [value]="role.value">{{role.viewValue}}</mat-option>
+                    }
+                </mat-select>
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-hint>User Role</mat-hint>
+                @if (userForm.get("user_role")?.hasError("required") || userForm.touched) {
+                <mat-error>User gender Required!</mat-error>
+                }
+            </mat-form-field>
+            }
             <button matButton mat-dialog-close>Cancel</button>
             @if(userEditingData){
             <button [disabled]="userForm.invalid" matButton="filled" matTooltip="Update User"

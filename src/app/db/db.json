@@ -2,6 +2,7 @@
   "products": [],
   "usersData": [
     {
+      "user_role": "superadmin",
       "personal_details": {
         "user_first_name": "Hamza",
         "user_last_name": "Ali",
@@ -9,27 +10,29 @@
         "user_dob": "2025-11-20T19:00:00.000Z"
       },
       "contact_details": {
-        "user_email_address": "hamzali@gmail.com",
+        "user_email_address": "hamza@gmail.com",
         "user_phone": "68716654684",
-        "user_address": "home address"
+        "user_address": "super admin"
       },
       "id": "45b9"
     },
     {
-      "id": "46bd",
+      "user_role": "admin",
       "personal_details": {
-        "user_first_name": "user99",
-        "user_last_name": "99",
+        "user_first_name": "admin",
+        "user_last_name": "123",
         "user_gender": "male",
         "user_dob": "2025-10-31T19:00:00.000Z"
       },
       "contact_details": {
-        "user_email_address": "user99@email.com",
+        "user_email_address": "admin123@email.com",
         "user_phone": "300654987",
-        "user_address": "user 99 home address"
-      }
+        "user_address": "Administrator of the system."
+      },
+      "id": "46bd"
     },
     {
+      "user_role": "user",
       "personal_details": {
         "user_first_name": "user99",
         "user_last_name": "edited",
@@ -44,6 +47,7 @@
       "id": "f1a6"
     },
     {
+      "user_role": "user",
       "personal_details": {
         "user_first_name": "user 78",
         "user_last_name": "edited again",
@@ -58,6 +62,7 @@
       "id": "230a"
     },
     {
+      "user_role": "user",
       "personal_details": {
         "user_first_name": "user is",
         "user_last_name": "is here",
@@ -70,6 +75,21 @@
         "user_address": "home address of user is here edited."
       },
       "id": "428d"
+    },
+    {
+      "user_role": "user",
+      "personal_details": {
+        "user_first_name": "new user",
+        "user_last_name": "is here",
+        "user_gender": "female",
+        "user_dob": "2025-11-13T19:00:00.000Z"
+      },
+      "contact_details": {
+        "user_email_address": "newuser@email.com",
+        "user_phone": "3005689748",
+        "user_address": "New user Email Address."
+      },
+      "id": "03f6"
     }
   ]
 }

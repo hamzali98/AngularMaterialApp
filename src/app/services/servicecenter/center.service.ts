@@ -1,4 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { finalize, map } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,8 +7,8 @@ import { SpinnerService } from '../spinner/spinner.service';
 import { SnackbarService } from '../snackservice/snackbar.service';
 import { UserHttpService } from '@app/user/user-services/user-http-service/user-http.service';
 import { DataServiceService } from '@app/user/user-services/user-profile-data-service/data-service.service';
+// import { AuthService } from '@app/authentication/auth/auth.service';
 import { userInterface } from '@app/user/interface/user-interface';
-import { AuthService } from '@app/authentication/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +21,13 @@ export class CenterService {
   tableData = signal(this._tableUsers);
   userData = signal(this._loggedUser);
 
+  private router = inject(Router);
   private matDialogRef = inject(MatDialog);
   private snackService = inject(SnackbarService);
   private spinnerService = inject(SpinnerService);
   private userHttpService = inject(UserHttpService);
   private dataService = inject(DataServiceService);
-  private authService = inject(AuthService);
+  // private authService = inject(AuthService);
 
   constructor() { }
 
@@ -67,14 +69,24 @@ export class CenterService {
     ).subscribe({
       next: (res) => {
         console.log("response", res);
-        this.dataService.setUserData(res.user);
-        // this.userData.set(res.user);
+        if (res.success === true) {
+          this.dataService.setUserData(res.user);
+          // this.router.navigate(['']);
+          this.userData.set(res.user);
+          this.dataService.setLogIn();
+          this.snackService.success(`Login Success full for ${res.user.personal_details.user_first_name} `);
+
+        } else {
+          // this.router.navigate(['login']);
+          this.dataService.setLogout();
+          this.snackService.error("Login Error");
+        }
+
       },
       error: (err) => {
         console.log(err);
       },
       complete: () => {
-        this.authService.setLogIn();
       }
     });
   }
@@ -101,23 +113,30 @@ export class CenterService {
   // }
 
   getLoggedUserFunc() {
+    console.log("calling service center function")
     this.spinnerService.show();
-    this.dataService.getUserData().subscribe({
-      next: (value) => {
-        if (value) {
-          console.log("Data in getting data service", value);
-          // this.dataSource = value;
-          this.userData.set(value);
+    this.dataService.getUserData()
+      .pipe(
+        finalize(() => {
+          this.spinnerService.hide();
+        })
+      )
+      .subscribe({
+        next: (value) => {
+          if (value) {
+            console.log("Data in getting data service", value);
+            // this.dataSource = value;
+            this.userData.set(value);
+            this.spinnerService.hide();
+          }
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {
           this.spinnerService.hide();
         }
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        this.spinnerService.hide();
-      }
-    });
+      });
   }
 
   getLogUserAfterEditFunc(id: string) {
@@ -142,12 +161,12 @@ export class CenterService {
     this.userHttpService.addUser(userForm.value).subscribe({
       next: (res) => {
         console.log(res);
-        this.snackService.showSnackBar("Success!");
+          this.snackService.success("User Added Successfully");
         this.getTableDataFunc();
       },
       error: (err) => {
         console.log(err);
-        this.snackService.showSnackBar("Error!");
+        this.snackService.error(`Adding user Failed! ${err}`);
       },
       complete: () => {
         this.getTableDataFunc();
@@ -161,13 +180,13 @@ export class CenterService {
     this.userHttpService.updateUser(editingUserId, userForm.value).subscribe({
       next: (res) => {
         console.log(res);
-        this.snackService.showSnackBar("Success!");
+        this.snackService.success("Data edited successfully!");
         this.getTableDataFunc();
         this.getLogUserAfterEditFunc(editingUserId);
       },
       error: (err) => {
         console.log(err);
-        this.snackService.showSnackBar("Error!");
+        this.snackService.error(`Error ! ${err}`);
       },
       complete: () => {
         this.getTableDataFunc();
@@ -200,19 +219,18 @@ export class CenterService {
   deleteTableDataFunc(data: userInterface) {
     this.spinnerService.show();
     console.log(data.id);
-    this.snackService.showSnackBar(`this is id : ${data.id}`);
     this.userHttpService.deleteUser(data.id).subscribe({
       next: (value) => {
         console.log(value);
+        this.snackService.warning(`Data against id : ${data.id} deleted`);
       },
       error: (err) => {
         console.log(err);
-        this.snackService.showSnackBar(`Error Deleting User ${data.id}`);
+        this.snackService.warning(`Data against id : ${data.id} not deleted(${err})`);
         this.spinnerService.hide();
       },
       complete: () => {
         this.getTableDataFunc();
-        this.snackService.showSnackBar(`Deleted User ${data.id}`);
         this.spinnerService.hide();
       }
     });
@@ -224,7 +242,12 @@ export class CenterService {
 
   // authentication service code
   authCheck() {
-    return this.authService.isLogIn();
+    if (this.dataService.isLogIn()?.toString() === 'true') {
+      return true;
+    } else {
+      return false;
+    }
+    // return this.dataService.isLogIn();
   }
 
 }
