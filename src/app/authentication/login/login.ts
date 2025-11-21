@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { AuthService } from '../auth/auth.service';
+// import { AuthService } from '../auth/auth.service';
 import { CenterService } from '@app/services/servicecenter/center.service';
 
 @Component({
@@ -26,10 +26,10 @@ import { CenterService } from '@app/services/servicecenter/center.service';
 export class Login {
 
   // loginForm!: FormGroup;
-  login_email = new FormControl('', Validators.required);
+  login_email = new FormControl('hamza@gmail.com', Validators.required);
   login_password = new FormControl('', Validators.required);
 
-  private authService = inject(AuthService);
+  // private authService = inject(AuthService);
   private serviceCenter = inject(CenterService);
 
   constructor(){

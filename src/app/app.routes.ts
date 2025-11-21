@@ -1,18 +1,33 @@
 import { Routes } from '@angular/router';
 import { NotFound } from './not-found/not-found';
 import { MaterialButtons } from './material-buttons/material-buttons';
-import { UserViewTabs } from './user/user-components/user-view-tabs/user-view-tabs';
+import { Tabs } from './shared/tabs/tabs';
 import { UserProfile } from './user/user-components/user-profile/user-profile';
 import { Login } from './authentication/login/login';
 import { authGuard } from './authentication/guards/auth-guard';
+import { roleGuardGuard } from './authentication/guards/role-guard-guard';
+import { ProductView } from './products/product-components/product-view/product-view';
+import { Dashboard } from './pages/dashboard/dashboard';
 
 
 export const routes: Routes = [
+
     {
         path: '',
-        title: 'Home',
-        component: UserViewTabs,
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+    },
+    {
+        path: 'dashboard',
+        title: 'Dashboard',
+        component: Dashboard,
+    },
+    {
+        path: 'tables',
+        title: 'Tables',
+        component: Tabs,
         // canActivate: [authGuard],
+        canActivate: [roleGuardGuard]
     },
     // {
     //     path: 'login',
@@ -30,7 +45,6 @@ export const routes: Routes = [
         title: 'Material Buttons',
         component: MaterialButtons
     },
-
     {
         path: '**',
         title: 'Not Found',

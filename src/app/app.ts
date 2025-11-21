@@ -23,8 +23,9 @@ export class App implements OnInit {
   private routerRef = inject(Router);
 
   constructor(){
+    console.log("Calling app.ts")
     if (this.serviceCenter.authCheck()){
-      // this.serviceCenter.getUserLoginFunc();
+      console.log(" calling app.ts function")
       this.serviceCenter.getLoggedUserFunc();
     }
   }
