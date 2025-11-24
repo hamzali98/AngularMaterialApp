@@ -2,15 +2,17 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CenterService } from './services/servicecenter/center.service';
-import { SidenavComponent } from './side-nav/side-nav.component';
+import { SidenavComponent } from './core/side-nav/side-nav.component';
 import { Login } from './authentication/login/login';
+import { Home } from "./core/home/home";
 
 @Component({
   selector: 'app-root',
   imports: [
     SidenavComponent,
     MatProgressSpinnerModule,
-    Login
+    Login,
+    Home
 ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
