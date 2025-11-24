@@ -12,7 +12,7 @@
                 <div mat-card-avatar class="avatar-image">
                     <button matIconButton class="profileeditbtn"
                         aria-label="Example icon button with a vertical three dot icon">
-                        <mat-icon style="color: cyan; ">camera_alt</mat-icon>
+                        <mat-icon style="color: var(--mat-sys-primary)">camera_alt</mat-icon>
                     </button>
                 </div>
                 <div class="namecontainer">
@@ -44,14 +44,14 @@
     </mat-card>
     <mat-card style="width: 100%;">
         <div class="cardcontenthead">
-            <mat-card-header>
+            <mat-card-header style="justify-content: left;" >
                 <mat-card-title>
                     User profile details
                 </mat-card-title>
             </mat-card-header>
             <button (click)="onEdit(dataSource)" matIconButton
                 aria-label="Example icon button with a vertical three dot icon">
-                <mat-icon style="color: cyan;">edit</mat-icon>
+                <mat-icon style="color: var(--mat-sys-primary)">edit</mat-icon>
             </button>
         </div>
 

@@ -50,6 +50,7 @@
   // padding: 5px;
   justify-content: center;
   align-items: center;
+  align-content: center;
   padding: 0.8rem;
   margin-left: 1rem;
 }
@@ -74,7 +75,7 @@ mat-card {
 .cardcontenthead {
   flex-direction: row;
   display: flex;
-  width: 95%;
+  width: auto;
   justify-content: space-between;
   // padding: 2px;
   margin-top: 5px;
@@ -87,14 +88,14 @@ mat-card {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 5px;
-  margin-right: 5px;
+  padding: 0.7rem;
 }
 
 .cardcontent p {
   // margin: 4px;
+  padding: 0.5rem;
   // margin-right: 20px;
-  width: 200px;
+  width: 10rem;
 }
 
 // mat-card-title{
