@@ -12,7 +12,7 @@
                         <mat-card-subtitle>Personal Details</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content formGroupName="personal_details" class="cardcontent">
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>First Name</mat-label>
                             <input matInput required placeholder="Enter First Name" formControlName="user_first_name">
                             <mat-icon matSuffix>face</mat-icon>
@@ -21,7 +21,7 @@
                             <mat-error>User First Name Required!</mat-error>
                             }
                         </mat-form-field>
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Last Name</mat-label>
                             <input matInput required placeholder="Enter Last Name" formControlName="user_last_name">
                             <mat-icon matSuffix>face</mat-icon>
@@ -30,7 +30,7 @@
                             <mat-error>User Last Name Required!</mat-error>
                             }
                         </mat-form-field>
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Gender</mat-label>
                             <mat-select required placeholder="select gender" formControlName="user_gender">
                                 @for (gender of genders; track gender) {
@@ -43,7 +43,7 @@
                             <mat-error>User gender Required!</mat-error>
                             }
                         </mat-form-field>
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Choose a date</mat-label>
                             <input matInput required placeholder="choose date" formControlName="user_dob"
                                 [matDatepicker]="picker" disable>
@@ -61,7 +61,7 @@
                         <mat-card-subtitle>Contact details</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content formGroupName="contact_details" class="cardcontent">
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Email Address</mat-label>
                             <input matInput required placeholder="Enter Email Address"
                                 formControlName="user_email_address">
@@ -73,7 +73,7 @@
                             <mat-error>User Email not Valid!</mat-error>
                             }
                         </mat-form-field>
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Phone</mat-label>
                             <input matInput required placeholder="Enter Phone Number" formControlName="user_phone">
                             <mat-icon matSuffix>phone</mat-icon>
@@ -82,7 +82,7 @@
                             <mat-error>User phone Required!</mat-error>
                             }
                         </mat-form-field>
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Home Address</mat-label>
                             <textarea matInput placeholder="Home Address ..." formControlName="user_address"></textarea>
 
@@ -144,7 +144,7 @@
                         <mat-card-subtitle>Personal Details</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content formGroupName="personal_details" class="cardcontent">
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label >First Name</mat-label>
                             <input matInput placeholder="Enter First Name" formControlName="user_first_name">
                             <mat-icon  matSuffix>face</mat-icon>
@@ -153,7 +153,7 @@
                             <mat-error>User First Name Required!</mat-error>
                             }
                         </mat-form-field>
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Last Name</mat-label>
                             <input matInput required placeholder="Enter Last Name" formControlName="user_last_name">
                             <mat-icon matSuffix>face</mat-icon>
@@ -162,7 +162,7 @@
                             <mat-error>User Last Name Required!</mat-error>
                             }
                         </mat-form-field>
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Gender</mat-label>
                             <mat-select required placeholder="select gender" formControlName="user_gender">
                                 @for (gender of genders; track gender) {
@@ -175,7 +175,7 @@
                             <mat-error>User gender Required!</mat-error>
                             }
                         </mat-form-field>
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Choose a date</mat-label>
                             <input matInput required placeholder="choose date" formControlName="user_dob"
                                 [matDatepicker]="picker" disable>
@@ -194,7 +194,7 @@
                         <mat-card-subtitle>Contact details</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content formGroupName="contact_details" class="cardcontent">
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Email Address</mat-label>
                             <input matInput required placeholder="Enter Email Address"
                                 formControlName="user_email_address">
@@ -206,7 +206,7 @@
                             <mat-error>User Email not Valid!</mat-error>
                             }
                         </mat-form-field>
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Phone</mat-label>
                             <input matInput required placeholder="Enter Phone Number" formControlName="user_phone">
                             <mat-icon matSuffix>phone</mat-icon>
@@ -215,7 +215,7 @@
                             <mat-error>User phone Required!</mat-error>
                             }
                         </mat-form-field>
-                        <mat-form-field appearance="fill">
+                        <mat-form-field appearance="outline">
                             <mat-label>Home Address</mat-label>
                             <textarea matInput placeholder="Home Address ..." formControlName="user_address"></textarea>
 
@@ -232,7 +232,7 @@
         </mat-card>
         <mat-dialog-actions MatDialogActions.align="end">
             @if(dataService.getLocalUserRole()?.toString() === 'superadmin'){
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
                 <mat-label>Role</mat-label>
                 <mat-select required placeholder="select Role" formControlName="user_role">
                     @for (role of roles; track role) {
