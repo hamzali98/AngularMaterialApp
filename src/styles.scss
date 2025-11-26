@@ -1,40 +1,43 @@
 @use '@angular/material' as mat;
 @use "tailwindcss";
+// @use "./tail.css";
 
-:root {
+@import url('./tail.css');
 
-  // @include mat.toolbar-overrides((container-background-color: var(--mat-sys-primary-container),
-  //     container-text-color: var(--mat-sys-primary),
-  //   ));
-  // @include mat.sidenav-overrides((container-divider-color: white,
-  //   ));
-  // @include mat.table-overrides(( // background-color: #424242,
-  //     header-headline-color: var(--mat-sys-primary),
-  //   ));
-  // @include mat.paginator-overrides((container-text-color: var(--mat-sys-primary),
-  //     container-background-color: var(--mat-sys-primary-container),
-  //   ));
-  // @include mat.tabs-overrides(( // active-focus-indicator-color: orange,
-  //     active-focus-label-text-color: var(--mat-sys-primary),
-  //     active-label-text-color: var(--mat-sys-primary),
-  //   ));
-  // buttons override
-  // @include mat.fab-overrides((
-  //   container-color: orange,
-  //   container-elevation-shadow: -4px -4px 5px 0px rgba(0, 0, 0, 0.5),
-  // ));
-}
+// :root {
+// @include mat.toolbar-overrides((container-background-color: var(--mat-sys-primary-container),
+//     container-text-color: var(--mat-sys-primary),
+//   ));
+// @include mat.sidenav-overrides((container-divider-color: white,
+//   ));
+// @include mat.table-overrides(( // background-color: #424242,
+//     header-headline-color: var(--mat-sys-primary),
+//   ));
+// @include mat.paginator-overrides((container-text-color: var(--mat-sys-primary),
+//     container-background-color: var(--mat-sys-primary-container),
+//   ));
+// @include mat.tabs-overrides(( // active-focus-indicator-color: orange,
+//     active-focus-label-text-color: var(--mat-sys-primary),
+//     active-label-text-color: var(--mat-sys-primary),
+//   ));
+// buttons override
+// @include mat.fab-overrides((
+//   container-color: orange,
+//   container-elevation-shadow: -4px -4px 5px 0px rgba(0, 0, 0, 0.5),
+// ));
+// }
+
 
 
 // Core styles once
-@include mat.core();
+// @include mat.core();
 
 // Theme classes (dynamic switching)
 .light-theme {
   color-scheme: light;
   // @include mat.all-component-themes($light-theme);
   @include mat.theme((color: (theme-type: light,
-        primary: mat.$azure-palette,
+        primary: mat.$rose-palette,
         tertiary: mat.$chartreuse-palette,
       ),
       typography: (plain-family: Roboto,
@@ -51,7 +54,7 @@
   color-scheme: dark;
   // @include mat.all-component-themes($dark-theme);
   @include mat.theme((color: (theme-type: dark,
-        primary: mat.$cyan-palette,
+        primary: mat.$azure-palette,
         tertiary: mat.$chartreuse-palette,
       ),
       typography: (plain-family: Roboto,
@@ -65,36 +68,34 @@
 }
 
 
-html {
-  // color-scheme: light dark;
-  // @include mat.theme((color: (primary: mat.$cyan-palette,
-  //       tertiary: mat.$chartreuse-palette,
-  //       theme-type: dark,
-  //     ),
-  //     typography: (plain-family: Roboto,
-  //       brand-family: Open Sans,
-  //       bold-weight: 900,
-  //       medium-weight: 500,
-  //       regular-weight: 300,
-  //     ),
-  //     density: 0,
-  //   ));
+// html {
+// color-scheme: light dark;
+// @include mat.theme((color: (primary: mat.$cyan-palette,
+//       tertiary: mat.$chartreuse-palette,
+//       theme-type: dark,
+//     ),
+//     typography: (plain-family: Roboto,
+//       brand-family: Open Sans,
+//       bold-weight: 900,
+//       medium-weight: 500,
+//       regular-weight: 300,
+//     ),
+//     density: 0,
+//   ));
 
-  // @include mat.theme((color: (primary: mat.$azure-palette,
-  //     tertiary: mat.$chartreuse-palette,
-  //     theme-type: light,
-  //   ),
-  //   typography: (plain-family: Roboto,
-  //     brand-family: Open Sans,
-  //     bold-weight: 900,
-  //     medium-weight: 500,
-  //     regular-weight: 300,
-  //   ),
-  //   density: 0,
-  // ));
-
-
-}
+// @include mat.theme((color: (primary: mat.$azure-palette,
+//     tertiary: mat.$chartreuse-palette,
+//     theme-type: light,
+//   ),
+//   typography: (plain-family: Roboto,
+//     brand-family: Open Sans,
+//     bold-weight: 900,
+//     medium-weight: 500,
+//     regular-weight: 300,
+//   ),
+//   density: 0,
+// ));
+// }
 
 body {
   // color-scheme: light dark;
@@ -166,4 +167,11 @@ body {
 .info-snackbar .mat-mdc-snackbar-surface {
   background-color: #2196f3 !important;
   color: white !important;
+}
+
+// *, ::before, ::after {
+//   border-style: none;
+// }
+* {
+  border-style: none;
 }
