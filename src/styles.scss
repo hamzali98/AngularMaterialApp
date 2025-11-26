@@ -4,7 +4,7 @@
 
 @import url('./tail.css');
 
-// :root {
+:root {
 // @include mat.toolbar-overrides((container-background-color: var(--mat-sys-primary-container),
 //     container-text-color: var(--mat-sys-primary),
 //   ));
@@ -25,7 +25,7 @@
 //   container-color: orange,
 //   container-elevation-shadow: -4px -4px 5px 0px rgba(0, 0, 0, 0.5),
 // ));
-// }
+}
 
 
 
@@ -169,9 +169,12 @@ body {
   color: white !important;
 }
 
-// *, ::before, ::after {
-//   border-style: none;
+// .mdc-notched-outline__notch {
+//   border-left: none !important;
+//   border-right: none !important;
 // }
-* {
-  border-style: none;
+
+// mat-mdc-notch-piece,
+.mdc-notched-outline__notch {
+  border-right :none !important ;
 }

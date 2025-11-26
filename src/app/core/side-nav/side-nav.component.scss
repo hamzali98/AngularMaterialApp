@@ -1,3 +1,19 @@
+// mat-toolbar {
+//   background-color: var(--mat-sys-primary-container) !important;
+//   backdrop-filter: blur(12px);
+//   background-color: color-mix(in srgb, var(--mat-sys-primary-container) 20%, transparent);
+//   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+// }
+
+mat-toolbar,
+mat-toolbar .mat-toolbar-row {
+  background-color: color-mix(in srgb, var(--mat-sys-primary-container) 70%, transparent) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
 .toolbar {
   display: flex;
   flex-direction: row;

@@ -1,4 +1,5 @@
-<mat-toolbar class=" fixed top-0 right-0 left-0 z-3 " style="background-color: var(--mat-sys-primary-container);">
+<!-- style="background-color: var(--mat-sys-primary-container)" -->
+<mat-toolbar class=" fixed top-0 right-0 left-0 z-3 bg-primary-container-mat backdrop-blur-md " >
 
   @if (isHandset$ | async) {
   <button matMiniFab class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
@@ -9,8 +10,8 @@
   }
 
   <div class="toolbar">
-    <span class="font-script text-midnight ">Material & Tailwind App</span>
-    <div class="flex flex-row items-center text-fuchsia-900 justify-center font-script">
+    <span class="font-script ">Material & Tailwind App</span>
+    <div class="flex flex-row items-center justify-center font-script">
       @if(userName()){
       <p>Greetings! {{userName()}} </p>
       } @else {
@@ -20,15 +21,15 @@
       <button class="m-3" matIconButton [matMenuTriggerFor]="menu">
         <mat-icon>settings</mat-icon>
       </button>
-      <mat-menu #menu="matMenu">
-        <div>
-          <div class="flex justify-center items-center border-b-2 cursor-pointer " (click)="onClick()">
+      <mat-menu #menu="matMenu" class="bg-linear-to-r  from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% " >
+        <div >
+          <div class="flex justify-center items-center  cursor-pointer " (click)="onClick()">
             <!-- <button class="avatar-image">
             </button> -->
             <div class="avatar-image" (click)="onClick()"></div>
             <p class="pr-3">Profile</p>
           </div>
-          <div class="flex justify-center items-center border-b-2 cursor-pointer" (click)="theme.theme.toggleTheme()">
+          <div class="flex justify-center items-center   cursor-pointer" (click)="theme.theme.toggleTheme()">
             <div (click)="theme.theme.toggleTheme()">
               <app-theme-toggle #theme>
               </app-theme-toggle>
