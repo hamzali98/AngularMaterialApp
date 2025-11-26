@@ -9,6 +9,8 @@ import {
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { DataServiceService } from '@app/user/user-services/user-profile-data-service/data-service.service';
+import { ThemeToggleComponent } from "../components/theme-toggle.component";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -16,8 +18,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
-import { DataServiceService } from '@app/user/user-services/user-profile-data-service/data-service.service';
-import { ThemeToggleComponent } from "../components/theme-toggle.component";
+import { MatMenuModule } from '@angular/material/menu';
 // import { AuthService } from '@app/authentication/auth/auth.service';
 
 @Component({
@@ -36,7 +37,8 @@ import { ThemeToggleComponent } from "../components/theme-toggle.component";
     RouterLinkActive,
     MatSlideToggleModule,
     MatCardModule,
-    ThemeToggleComponent
+    ThemeToggleComponent,
+    MatMenuModule
 ]
 })
 export class SidenavComponent implements OnInit, AfterViewInit {
