@@ -21,8 +21,8 @@
                     @if (login_email.hasError("required") || login_email.touched) {
                     <mat-error>Login email Required!</mat-error>
                     }
-                </mat-form-field>
-                <mat-form-field appearance="outline">
+                </mat-form-field >
+                <mat-form-field appearance="outline" >
                     <mat-label>Password</mat-label>
                     <input matInput required placeholder="Enter Password" [formControl]="login_password">
                     <mat-icon matSuffix>password</mat-icon>
