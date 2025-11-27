@@ -4,11 +4,35 @@
   </p>
   @if(dataService.getLocalUserRole()?.toString() === 'superadmin'){
   <button (click)="onAdd()" matButton="elevated">Add Product</button>
-  }
+  
+}
 </div>
-<div class="container">
-
+<div class="p-4" >
+  <table class="table-auto p-4 ">
+    <thead>
+      <tr>
+        <th class="border border-gray-300 ...">State</th>
+        <th class="border border-gray-300 ...">City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="border border-gray-300 ...">Indiana</td>
+        <td class="border border-gray-300 ...">Indianapolis</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-300 ...">Ohio</td>
+        <td class="border border-gray-300 ...">Columbus</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-300 ...">Michigan</td>
+        <td class="border border-gray-300 ...">Detroit</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+<!-- <bu p-4lass="transition delay-20 duration-2000 ease-linear hover:-translate-y-1 hover:scale-100 bg-cyan-500 shadow-sm shadow-cyan-500/50 rounded-full p-3 hover:shadow-md ">Add
+  Product</button> -->
 <!-- <button class="bg-cyan-500 shadow-sm shadow-cyan-500/50 rounded-full p-3 hover:shadow-md ">Add Product</button> -->
 <!-- <div
   class="flex items-center w-100  gap-4 rounded-lg bg-white p-6 shadow-md outline outline-black/5 dark:bg-gray-800">
@@ -17,7 +41,7 @@
     <div class="size-6 stroke-pink-700 dark:stroke-pink-500">
       <mat-icon class="stroke-pink-700">notification_important</mat-icon>
     </div>
-
+    
   </span>
   <div>
     <p class="text-gray-700 dark:text-gray-400 text-lg/8 antialiased font-extralight ">
@@ -75,3 +99,4 @@
     </p>
   </div>
 </div> -->
+
