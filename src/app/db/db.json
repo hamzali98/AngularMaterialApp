@@ -1,5 +1,48 @@
 {
-  "products": [],
+  "products": [
+    {
+      "id": "72d5",
+      "product_name": "logo",
+      "product_price": "5",
+      "product_category": "design",
+      "product_description": "a logo"
+    },
+    {
+      "id": "b0f7",
+      "product_name": "clothes",
+      "product_price": "5",
+      "product_category": "clothes",
+      "product_description": "a cloth"
+    },
+    {
+      "product_name": "product edited",
+      "product_price": "8",
+      "product_category": "product cat edited",
+      "product_description": "desc edited",
+      "id": "36a6"
+    },
+    {
+      "id": "ee44",
+      "product_name": "prods",
+      "product_price": "89",
+      "product_category": "jsionnjs",
+      "product_description": "djcndj ndsjnc kjsd"
+    },
+    {
+      "id": "3d28",
+      "product_name": "hytred",
+      "product_price": "iskoidn",
+      "product_category": "uiirtudc",
+      "product_description": "idjcfnu n"
+    },
+    {
+      "id": "eac1",
+      "product_name": "hell",
+      "product_price": "89",
+      "product_category": "is ",
+      "product_description": "heee"
+    }
+  ],
   "usersData": [
     {
       "user_role": "superadmin",
