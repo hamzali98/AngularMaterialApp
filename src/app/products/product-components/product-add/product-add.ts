@@ -17,6 +17,9 @@ import { SnackbarService } from '@app/services/snackservice/snackbar.service';
 import { SpinnerService } from '@app/services/spinner/spinner.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { productInterface } from '@app/products/interface/product-interface';
+import { ProductsHttpService } from '@app/products/product-services/products-http-service/products-http.service';
+import { CenterService } from '@app/services/servicecenter/center.service';
+import { finalize } from 'rxjs';
 
 
 interface Category {
@@ -45,7 +48,7 @@ interface Category {
   templateUrl: './product-add.html',
   styleUrl: './product-add.scss',
 })
-export class ProductAdd {
+export class ProductAdd implements OnInit {
 
   categories: Category[] = [
     { value: 'Beauty', viewValue: 'Male' },
@@ -58,8 +61,12 @@ export class ProductAdd {
   ];
 
   productForm: FormGroup;
-  userEditingData!: productInterface;
+  productEditingData!: productInterface;
 
+  httpService = inject(ProductsHttpService);
+  snackService = inject(SnackbarService);
+  spinnerService = inject(SpinnerService);
+  matDialog = inject(MatDialog);
 
   constructor() {
     this.productForm = new FormGroup({
@@ -71,5 +78,66 @@ export class ProductAdd {
     this.productForm.markAllAsTouched();
   }
 
-  OnFormSubmit() { }
+  ngOnInit() {
+    if(this.productEditingData){
+      this.pathEditingData();
+    }
+  }
+
+  pathEditingData(){
+    this.productForm.patchValue({
+      product_name: this.productEditingData.product_name,
+      product_price: this.productEditingData.product_price,
+      product_category: this.productEditingData.product_category,
+      product_description: this.productEditingData.product_description
+    });
+  }
+
+  OnFormSubmit() {
+    if (this.productEditingData) {
+      this.spinnerService.show();
+      this.httpService.editProduct(this.productEditingData.id, this.productForm.value).pipe(
+        finalize(() => {
+          this.spinnerService.hide();
+        })
+      )
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+            this.snackService.success("Product Updated!");
+          },
+          error: (err) => {
+            console.log(err);
+            this.snackService.error("Internal server error");
+          },
+          complete: () => {
+            this.dialogClose();
+          }
+        });
+    } else {
+      this.spinnerService.show();
+      this.httpService.addProduct(this.productForm.value).pipe(
+        finalize(() => {
+          this.spinnerService.hide();
+        })
+      )
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+            this.snackService.success("Product added!");
+          },
+          error: (err) => {
+            console.log(err);
+            this.snackService.error("Internal server error");
+          },
+          complete: () => {
+            this.dialogClose();
+          }
+        });
+    }
+  }
+
+  dialogClose() {
+    this.matDialog.closeAll();
+  }
 }

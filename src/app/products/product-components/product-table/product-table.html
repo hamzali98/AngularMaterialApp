@@ -4,33 +4,82 @@
   </p>
   @if(dataService.getLocalUserRole()?.toString() === 'superadmin'){
   <button (click)="onAdd()" matButton="elevated">Add Product</button>
-  
-}
+  }
 </div>
-<div class="p-4" >
+<div class="p-4">
   <table class="table-auto p-4 ">
-    <thead>
+    <thead class=" border-b border-b-gray-400 ">
       <tr>
-        <th class="border border-gray-300 ...">State</th>
-        <th class="border border-gray-300 ...">City</th>
+        <th class="text-left py-5">Id.</th>
+        <th class="text-left py-5">Product</th>
+        <th class="text-left py-5">Price</th>
+        <th class="text-left py-5">Category</th>
+        <th class="text-left py-5">Details</th>
+        <th class="text-left py-5">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="border border-gray-300 ...">Indiana</td>
-        <td class="border border-gray-300 ...">Indianapolis</td>
+      @for(data of currentPageData; track data.id){
+      <tr class=" border-b border-b-gray-400 ">
+        <td class="py-4 font-extralight">{{data.id}}</td>
+        <td class="py-4 font-extralight">{{data.product_name}}</td>
+        <td class="py-4 font-extralight">{{data.product_price}}</td>
+        <td class="py-4 font-extralight">{{data.product_category}}</td>
+        <td class="py-4 font-extralight">{{data.product_description}}</td>
+        <td class="font-extralight">
+          <button class="ml-3 cursor-pointer" (click)="onEdit(data)">
+            <span class="text-blue-300">
+              <mat-icon>edit</mat-icon>
+            </span>
+          </button>
+          <button class="ml-3 cursor-pointer" (click)="onDelete(data.id)">
+            <span class="text-red-300">
+              <mat-icon>delete</mat-icon>
+            </span>
+          </button>
+        </td>
       </tr>
-      <tr>
-        <td class="border border-gray-300 ...">Ohio</td>
-        <td class="border border-gray-300 ...">Columbus</td>
-      </tr>
-      <tr>
-        <td class="border border-gray-300 ...">Michigan</td>
-        <td class="border border-gray-300 ...">Detroit</td>
-      </tr>
+      }
     </tbody>
   </table>
+  <!-- pagination code -->
+  <div class="flex justify-end items-center gap-4 px-8 py-8">
+    <span class="text-sm font-light">Items per page :</span>
+    <select class="border p-2 rounded-md w-20  " [formControl]="itemsPerPage" (selectionchange)="setItemsPerPage()">
+      <option [value]="5">5</option>
+      <option [value]="10">10</option>
+      <option [value]="20">20</option>
+    </select>
+
+    <span class="text-sm font-light">{{ displayStartIndex }} - {{ endIndex }} of {{ totalItems() }}</span>
+
+    <button class="rounded-full hover:bg-white/10 border pt-1.5 px-1 text-xs ">
+      <mat-icon>first_page</mat-icon></button>
+    <button class="rounded-full hover:bg-white/10 border pt-1.5 px-1 text-xs " (click)="previousPage()" [disabled]="currentPage === 1">
+      <mat-icon>keyboard_arrow_left</mat-icon></button>
+    <button class="rounded-full hover:bg-white/10 border pt-1.5 px-1 text-xs " (click)="nextPage()" [disabled]="endIndex >= totalItems()">
+      <mat-icon>keyboard_arrow_right</mat-icon></button>
+    <button class="rounded-full hover:bg-white/10 border pt-1.5 px-1 text-xs ">
+      <mat-icon>last_page</mat-icon></button>
+
+    <!-- <span>Items @if(!dataSource) {
+      {{ startIndex }}
+      } @else {
+      {{ startIndex + 1 }}
+      } - {{ endIndex }} of {{ totalItems() }}</span> -->
+
+    <!-- <button (click)="previousPage()" [disabled]="currentPage === 1">
+      ‹
+    </button>
+    <button (click)="nextPage()" [disabled]="endIndex >= totalItems()">
+      ›
+    </button> -->
+  </div>
+  <!-- pagination code end -->
 </div>
+
+
+<!-- rough code -->
 <!-- <bu p-4lass="transition delay-20 duration-2000 ease-linear hover:-translate-y-1 hover:scale-100 bg-cyan-500 shadow-sm shadow-cyan-500/50 rounded-full p-3 hover:shadow-md ">Add
   Product</button> -->
 <!-- <button class="bg-cyan-500 shadow-sm shadow-cyan-500/50 rounded-full p-3 hover:shadow-md ">Add Product</button> -->
@@ -99,4 +148,3 @@
     </p>
   </div>
 </div> -->
-

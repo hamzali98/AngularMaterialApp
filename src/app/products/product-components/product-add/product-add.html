@@ -1,101 +1,131 @@
 <div class="container">
-    <div class="border border-stone-400 rounded-2xl w-full h-full p-10">
-        <p class="text-center bg-red-500 text-lg ">Product Form</p>
-        <div class="border border-[bordercolor] rounded-2xl w-full h-full p-10 mt-4">
-            <form [formGroup]="productForm" (ngSubmit)="OnFormSubmit()">
-                <div class="relative w-full">
-                    <input required type="text" id="pname" class="peer w-full border rounded-md py-3 pl-3 pr-10
-                            invalid:border-red-600 valid:border-green-600 outline-0" formControlName="product_name"
-                        placeholder="Enter Name" />
-                    <span class="absolute right-3 top-1/3 -translate-y-1/2 
-                    peer-invalid:text-red-600 peer-valid:text-green-600
-                    ">
-                        <mat-icon>style</mat-icon>
-                    </span>
-                    <label for="pname" class="absolute left-3 top-3 px-1 transition-all duration-200
-                            peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
-                            peer-focus:-top-3 peer-focus:text-sm bg-[#121316]
-                            peer-invalid:text-red-600 peer-valid:text-green-600 
-                            after:ml-0.5 after:peer-invalid:text-red-600 after:peer-valid:text-green-600 after:content-['*']
-                            ">
-                        product Name
-                    </label>
-                    @if(productForm.get('product_name')?.hasError('required')){
-                    <p class="text-red-600 text-xs pl-4 pt-2 ">Product Name Required</p>
-                    } @else {
-                    <P class="text-green-600 text-xs pl-4 pt-2 ">Enter Product Name/Brand</P>
-                    }
+    <form [formGroup]="productForm" (ngSubmit)="OnFormSubmit()">
+        <div class="border border-stone-400 rounded-2xl w-120 h-full px-10 ">
+            <p class="text-center text-lg my-4">Product Form</p>
+            <mat-dialog-content class="mat-typography mb-10 ">
+                <div class="border border-[bordercolor] rounded-2xl w-full h-full px-10 py-5 ">
+                    <!-- product name input -->
+                    <div class="relative w-full">
+                        <input required type="text" id="pname" class="peer w-full border rounded-md py-3 pl-3 pr-10 outline-0
+                            invalid:border-red-600 invalid:caret-red-600  
+                            valid:border-green-600 valid:caret-green-600
+                            invalid:placeholder-red-600 placeholder:text-xs" formControlName="product_name"
+                            placeholder="Enter Product Name" />
+                        <span class="absolute right-3 top-1/3 -translate-y-1/2 
+                        peer-invalid:text-red-600 peer-valid:text-green-600 ">
+                            <mat-icon>style</mat-icon>
+                        </span>
+                        <label for="pname" class="absolute left-3 top-3 px-1 transition-all duration-200
+                                peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
+                                peer-focus:-top-3 peer-focus:text-sm
+                                peer-valid:-top-3 peer-valid:text-sm
+                                peer-invalid:text-red-600 peer-valid:text-green-600
+                                bg-container-bg">
+                            <span class="text-md flex items-center gap-1">
+                                Product name
+                                <span class="peer-invalid:text-red-600 peer-valid:text-green-600">*</span>
+                            </span>
+                        </label>
+                        @if(productForm.get('product_name')?.hasError('required')){
+                        <p class="text-red-600 text-xs pl-4 pt-2 ">Product Name/Brand Required</p>
+                        } @else {
+                        <P class="text-green-600 text-xs pl-4 pt-2 ">Product Name/Brand</P>
+                        }
+                    </div>
+                    <!-- product price input -->
+                    <div class="relative w-full mt-3">
+                        <input required type="text" id="pprice" class="peer w-full border rounded-md py-3 pl-3 pr-10 outline-0
+                            invalid:border-red-600 valid:border-green-600  
+                            invalid:placeholder-red-600 placeholder:text-xs" formControlName="product_price"
+                            placeholder="Enter Product Price" />
+                        <span class="absolute right-3 top-1/3 -translate-y-1/2 
+                        peer-invalid:text-red-600 peer-valid:text-green-600 ">
+                            <mat-icon>attach_money</mat-icon>
+                        </span>
+                        <label for="pprice" class="absolute left-3 top-3 px-1 transition-all duration-200
+                                peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
+                                peer-focus:-top-3 peer-focus:text-sm
+                                peer-valid:-top-3 peer-valid:text-sm
+                                peer-invalid:text-red-600 peer-valid:text-green-600
+                                bg-container-bg">
+                            <span class="text-md flex items-center gap-1">
+                                Product Price
+                                <span class="peer-invalid:text-red-600 peer-valid:text-green-600">*</span>
+                            </span>
+                        </label>
+                        @if(productForm.get('product_price')?.hasError('required')){
+                        <p class="text-red-600 text-xs pl-4 pt-2 ">Product Price Required</p>
+                        } @else {
+                        <P class="text-green-600 text-xs pl-4 pt-2 ">Product Price</P>
+                        }
+                    </div>
+                    <!-- product category input -->
+                    <div class="relative w-full mt-3">
+                        <input required type="text" id="pcategory" class="peer w-full border rounded-md py-3 pl-3 pr-10 outline-0
+                            invalid:border-red-600 valid:border-green-600 
+                            invalid:placeholder-red-600 placeholder:text-xs" formControlName="product_category"
+                            placeholder="Enter Product category" />
+                        <span class="absolute right-3 top-1/3 -translate-y-1/2 
+                        peer-invalid:text-red-600 peer-valid:text-green-600">
+                            <mat-icon>category</mat-icon>
+                        </span>
+                        <label for="pcategory" class="absolute left-3 top-3 px-1 transition-all duration-200
+                                peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
+                                peer-focus:-top-3 peer-focus:text-sm
+                                peer-valid:-top-3 peer-valid:text-sm
+                                peer-invalid:text-red-600 peer-valid:text-green-600
+                                bg-container-bg">
+                            <span class="text-md flex items-center gap-1">
+                                Product Category
+                                <span class="peer-invalid:text-red-600 peer-valid:text-green-600">*</span>
+                            </span>
+                        </label>
+                        @if(productForm.get('product_category')?.hasError('required')){
+                        <p class="text-red-600 text-xs pl-4 pt-2 ">Product Category Required</p>
+                        } @else {
+                        <P class="text-green-600 text-xs pl-4 pt-2 ">Product Category</P>
+                        }
+                    </div>
+                    <!-- product description input -->
+                    <div class="relative w-100% mt-3">
+                        <textarea required type="text" id="pdesc" class="peer w-full border rounded-md py-3 pl-3 pr-10 outline-0
+                            invalid:border-red-600 valid:border-green-600  
+                            invalid:placeholder-red-600 placeholder:text-xs" formControlName="product_description"
+                            placeholder="Enter Product Description">
+                    </textarea>
+                        <span class="absolute right-3 top-1/3 -translate-y-1/2 
+                        peer-invalid:text-red-600 peer-valid:text-green-600">
+                            <mat-icon>description</mat-icon>
+                        </span>
+                        <label for="pdesc" class="absolute left-3 top-3 px-1 transition-all duration-200
+                                peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
+                                peer-focus:-top-3 peer-focus:text-sm
+                                peer-valid:-top-3 peer-valid:text-sm
+                                peer-invalid:text-red-600 peer-valid:text-green-600
+                                bg-container-bg">
+                            <span class="text-md flex items-center gap-1">
+                                Product Description
+                                <span class="peer-invalid:text-red-600 peer-valid:text-green-600">*</span>
+                            </span>
+                        </label>
+                        @if(productForm.get('product_description')?.hasError('required')){
+                        <p class="text-red-600 text-xs pl-4 pt-0 ">Product Description Required!</p>
+                        } @else {
+                        <P class="text-green-600 text-xs pl-4 pt-0 ">Product Description</P>
+                        }
+                    </div>
                 </div>
-                <div class="relative w-full mt-3">
-                    <input required type="text" id="pprice" class="peer w-full border rounded-md py-3 pl-3 pr-10
-                            invalid:border-red-600 valid:border-green-600 outline-0" formControlName="product_price"
-                        placeholder="Enter Price" />
-                    <span class="absolute right-3 top-1/3 -translate-y-1/2 
-                    peer-invalid:text-red-600 peer-valid:text-green-600
-                    ">
-                        <mat-icon>attach_money</mat-icon>
-                    </span>
-                    <label for="pprice" class="absolute left-3 top-3 px-1 transition-all duration-200
-                            peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
-                            peer-focus:-top-3 peer-focus:text-sm bg-[#121316]
-                            peer-invalid:text-red-600 peer-valid:text-green-600 
-                            after:ml-0.5 after:peer-invalid:text-red-600 after:peer-valid:text-green-600 after:content-['*']
-                            ">
-                        product Price
-                    </label>
-                    @if(productForm.get('product_price')?.hasError('required')){
-                    <p class="text-red-600 text-xs pl-4 pt-2 ">Product Price Required</p>
-                    } @else {
-                    <P class="text-green-600 text-xs pl-4 pt-2 ">Enter Product Price</P>
-                    }
-                </div>
-                <div class="relative w-full">
-                    <input required type="text" id="pname" class="peer w-full border rounded-md py-3 pl-3 pr-10
-                            invalid:border-red-600 valid:border-green-600 outline-0" formControlName="product_name"
-                        placeholder="Enter Name" />
-                    <span class="absolute right-3 top-1/3 -translate-y-1/2 
-                    peer-invalid:text-red-600 peer-valid:text-green-600
-                    ">
-                        <mat-icon>style</mat-icon>
-                    </span>
-                    <label for="pname" class="absolute left-3 top-3 px-1 transition-all duration-200
-                            peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
-                            peer-focus:-top-3 peer-focus:text-sm bg-[#121316]
-                            peer-invalid:text-red-600 peer-valid:text-green-600 
-                            after:ml-0.5 after:peer-invalid:text-red-600 after:peer-valid:text-green-600 after:content-['*']
-                            ">
-                        product Name
-                    </label>
-                    @if(productForm.get('product_name')?.hasError('required')){
-                    <p class="text-red-600 text-xs pl-4 pt-2 ">Product Name Required</p>
-                    } @else {
-                    <P class="text-green-600 text-xs pl-4 pt-2 ">Enter Product Name/Brand</P>
-                    }
-                </div>
-                <div class="relative w-full">
-                    <input required type="text" id="pname" class="peer w-full border rounded-md py-3 pl-3 pr-10
-                            invalid:border-red-600 valid:border-green-600 outline-0" formControlName="product_name"
-                        placeholder="Enter Name" />
-                    <span class="absolute right-3 top-1/3 -translate-y-1/2 
-                    peer-invalid:text-red-600 peer-valid:text-green-600
-                    ">
-                        <mat-icon>style</mat-icon>
-                    </span>
-                    <label for="pname" class="absolute left-3 top-3 px-1 transition-all duration-200
-                            peer-placeholder-shown:top-3 peer-placeholder-shown:text-base
-                            peer-focus:-top-3 peer-focus:text-sm bg-[#121316]
-                            peer-invalid:text-red-600 peer-valid:text-green-600 
-                            after:ml-0.5 after:peer-invalid:text-red-600 after:peer-valid:text-green-600 after:content-['*']
-                            ">
-                        product Name
-                    </label>
-                    @if(productForm.get('product_name')?.hasError('required')){
-                    <p class="text-red-600 text-xs pl-4 pt-2 ">Product Name Required</p>
-                    } @else {
-                    <P class="text-green-600 text-xs pl-4 pt-2 ">Enter Product Name/Brand</P>
-                    }
-                </div>
-            </form>
+            </mat-dialog-content>
         </div>
-    </div>
+        <mat-dialog-actions MatDialogActions.align="end">
+            <button matButton mat-dialog-close>Cancel</button>
+            @if(productEditingData){
+            <button [disabled]="productForm.invalid" matButton="filled" matTooltip="Update User"
+                type="submit">Update</button>
+            } @else {
+            <button [disabled]="productForm.invalid" matButton="filled" matTooltip="Submit Details"
+                type="submit">Submit</button>
+            }
+        </mat-dialog-actions>
+    </form>
 </div>
