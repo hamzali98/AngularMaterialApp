@@ -152,21 +152,30 @@ body {
 .success-snackbar .mat-mdc-snackbar-surface {
   background-color: #4caf50 !important;
   color: black !important;
+  z-index: 1060;
 }
 
 .error-snackbar .mat-mdc-snackbar-surface {
   background-color: #f44336 !important;
   color: black !important;
+  z-index: 1060;
+
 }
 
 .warning-snackbar .mat-mdc-snackbar-surface {
   background-color: #ff9800 !important;
   color: black !important;
+  z-index: 1060;
+
 }
 
 .info-snackbar .mat-mdc-snackbar-surface {
   background-color: #2196f3 !important;
   color: white !important;
+  z-index: 1060;
+}
+.cdk-overlay-container {
+  z-index: 2000 !important;
 }
 
 // .mdc-notched-outline__notch {

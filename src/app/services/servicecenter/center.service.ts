@@ -85,6 +85,7 @@ export class CenterService {
       },
       error: (err) => {
         console.log(err);
+        this.snackService.error("Internal server error!");
       },
       complete: () => {
       }
@@ -132,6 +133,8 @@ export class CenterService {
         },
         error: (err) => {
           console.log(err);
+        this.snackService.error("Internal server error!");
+
         },
         complete: () => {
           this.spinnerService.hide();
@@ -148,6 +151,8 @@ export class CenterService {
       },
       error: (err) => {
         console.log(err);
+        this.snackService.error("Internal server error!");
+
       },
       complete: () => {
         this.matDialogCloseFunc();
@@ -166,7 +171,9 @@ export class CenterService {
       },
       error: (err) => {
         console.log(err);
-        this.snackService.error(`Adding user Failed! ${err}`);
+        // this.snackService.error(`Adding user Failed! ${err}`);
+        this.snackService.error("Internal server error!");
+
       },
       complete: () => {
         this.getTableDataFunc();
@@ -186,7 +193,9 @@ export class CenterService {
       },
       error: (err) => {
         console.log(err);
-        this.snackService.error(`Error ! ${err}`);
+        // this.snackService.error(`Error ! ${err}`);
+        this.snackService.error("Internal server error!");
+
       },
       complete: () => {
         this.getTableDataFunc();
@@ -208,6 +217,8 @@ export class CenterService {
       error: (err) => {
         console.log(err);
         this.spinnerService.hide();
+        this.snackService.error("Internal server error!");
+
       },
       complete: () => {
         this.spinnerService.hide();
@@ -226,7 +237,9 @@ export class CenterService {
       },
       error: (err) => {
         console.log(err);
-        this.snackService.warning(`Data against id : ${data.id} not deleted(${err})`);
+        // this.snackService.warning(`Data against id : ${data.id} not deleted(${err})`);
+        this.snackService.error("Internal server error!");
+
         this.spinnerService.hide();
       },
       complete: () => {

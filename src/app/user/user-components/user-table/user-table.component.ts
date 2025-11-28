@@ -81,7 +81,7 @@ export class UsertableComponent implements AfterViewInit, OnInit {
 
   onView(data: userInterface) {
     const dialogRef = this.matDialog.open(UserView, {
-      // height: '90%',
+      height: '90%',
       // width: '100%',
     });
     dialogRef.componentInstance.dataSource = data;

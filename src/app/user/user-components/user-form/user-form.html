@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ">
     <!-- main form -->
     <form [formGroup]="userForm" (ngSubmit)="OnFormSubmit()">
         <!-- outer parent card -->
@@ -254,8 +254,6 @@
             <button [disabled]="userForm.invalid" matButton="filled" matTooltip="Submit Details"
                 type="submit">Submit</button>
             }
-            <!-- <button [disabled]="userForm.invalid" matButton="filled" matTooltip="Submit Details"
-                type="submit">Submit</button> -->
         </mat-dialog-actions>
 
     </form>
