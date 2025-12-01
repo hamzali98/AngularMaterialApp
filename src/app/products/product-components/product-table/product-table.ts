@@ -25,7 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
     // MatPaginatorModule,
     // DatePipe,
     MatIconModule,
-    // MatButtonModule,
+    MatButtonModule,
     // MatInputModule,
     // MatFormFieldModule,
     MatSelectModule,

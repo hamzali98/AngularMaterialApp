@@ -53,6 +53,11 @@
   <mat-sidenav #drawer fixedInViewport [style.marginTop.px]="isHandset$ ? 64 : 64"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false">
+    <!-- <mat-toolbar>
+      <button matMiniFab class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      Menu</mat-toolbar> -->
     <mat-nav-list>
       <a mat-list-item routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Home</a>
       <a mat-list-item routerLinkActive="active" routerLink="/tables">Data Tables</a>

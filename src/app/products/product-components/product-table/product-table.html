@@ -3,7 +3,7 @@
     Product Data Table
   </p>
   @if(dataService.getLocalUserRole()?.toString() === 'superadmin'){
-  <button (click)="onAdd()" matButton="elevated">Add Product</button>
+  <button (click)="onAdd()" matButton="elevated" >Add Product</button>
   }
 </div>
 <div class="p-4">
@@ -45,7 +45,12 @@
   <!-- pagination code -->
   <div class="flex justify-end items-center gap-4 px-8 py-8">
     <span class="text-sm font-light">Items per page :</span>
-    <select class="border p-2 rounded-md w-20  " [formControl]="itemsPerPage" (selectionchange)="setItemsPerPage()">
+    <!-- (selectionchange)="setItemsPerPage()" -->
+    <!-- (select)="setItemsPerPage()" -->
+    <!-- (onclick)="setItemsPerPage()" -->
+    <select class="border p-2 rounded-md w-20  " [formControl]="itemsPerPage" 
+    (change)="setItemsPerPage()"
+    >
       <option [value]="5">5</option>
       <option [value]="10">10</option>
       <option [value]="20">20</option>
